@@ -1,0 +1,17 @@
+import { signIn } from '../../auth';
+
+async function SignIn() {
+  'use server';
+
+  await signIn('github');
+}
+
+export default function Login() {
+  return (
+    <>
+      <form action={SignIn}>
+        <button>Sign In</button>
+      </form>
+    </>
+  );
+}

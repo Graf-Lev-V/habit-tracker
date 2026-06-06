@@ -6,5 +6,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     pages: {
         signIn: '/login'
     },
-    secret: process.env.AUTH_SECRET
+    secret: process.env.AUTH_SECRET,
+    callbacks: {
+        session({ session, token }) {
+            session.user.id = token.sub!
+            return session
+        }
+    }
 })

@@ -1,43 +1,35 @@
 import { supabaseAdmin } from '@/lib/supabase-admin';
-import { auth, signOut } from '../../lib/auth';
-import { createHabit, deleteHabit } from './actions';
+import { auth } from '../../lib/auth';
+import { handleSignOut, handleCreate, deleteHabit, toggleHabit } from './actions';
 
 export default async function Dashboard() {
   const session = await auth();
   if (!session) throw new Error('Unauthorized')
-
-  async function SignOut() {
-    'use server'
-    await signOut({ redirectTo: '/login' });
-  }
 
   const { data: habits } = await supabaseAdmin
     .from('habits')
     .select('*')
     .eq('user_id', session.user!.id)
 
-  async function handleCreate(formData: FormData) {
-    'use server'
-    const name = formData.get('name') as string
-    await createHabit(name)
-  }
-
   return (
     <>
-      <form action={SignOut}>
+      <form action={handleSignOut}>
         <button>Sign Out</button>
       </form>
       <p>{session?.user?.name}</p>
       <p>{session?.user?.id}</p>
       <form action={handleCreate}>
-        <input placeholder='Habit name'></input>
+        <input className='border border-white' name='name' placeholder='Habit name'></input>
         <button type='submit'>Add habit</button>
       </form>
       {habits?.map((habit) => 
           <div key={habit.id}>
-            <p>{habit.name}</p>
+            <p className='text-white'>{habit.name}</p>
             <form action={deleteHabit.bind(null, habit.id)}>
-              <button type='submit'></button>
+              <button type='submit'>Delete</button>
+            </form>
+            <form action={toggleHabit.bind(null, habit.id)}>
+              <button type='submit'>Done</button>
             </form>
           </div>
       )}

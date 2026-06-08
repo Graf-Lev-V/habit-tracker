@@ -1,7 +1,16 @@
 'use server'
 
-import { auth } from '@/lib/auth'
+import { auth, signOut } from '@/lib/auth'
 import { supabaseAdmin } from '@/lib/supabase-admin'
+import { revalidatePath } from 'next/cache'
+
+export async function handleSignOut() {
+    await signOut({ redirectTo: '/login' })
+}
+
+export async function handleCreate(formData: FormData) {
+    await createHabit(formData.get('name') as string)
+}
 
 export async function createHabit(name: string) {
     const session = await auth()
@@ -9,6 +18,7 @@ export async function createHabit(name: string) {
     await supabaseAdmin
         .from('habits')
         .insert({ name: name, user_id: session.user!.id })
+    revalidatePath('/dashboard')
 }
 
 export async function deleteHabit(id: string) {
@@ -19,6 +29,7 @@ export async function deleteHabit(id: string) {
         .delete()
         .eq('id', id)
         .eq('user_id', session.user!.id)
+    revalidatePath('/dashboard')
 }
 
 export async function toggleHabit(id: string) {
@@ -26,5 +37,10 @@ export async function toggleHabit(id: string) {
     if (!session) throw new Error('Unauthorized')
     await supabaseAdmin
         .from('habit_logs')
-        .insert({ habit_id: id, completed_date: new Date().toISOString().split('T')[0] })
+        .insert({ 
+            habit_id: id, 
+            user_id: session.user!.id, 
+            completed_date: new Date().toISOString().split('T')[0] 
+        })
+    revalidatePath('/dashboard')
 }

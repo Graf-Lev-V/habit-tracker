@@ -2,6 +2,8 @@ import { supabaseAdmin } from '@/lib/supabase-admin';
 import { auth } from '../../lib/auth';
 import { handleSignOut, handleCreate, deleteHabit, toggleHabit } from './actions';
 
+export const dynamic = 'force-dynamic'
+
 export default async function Dashboard() {
   const session = await auth();
   if (!session) throw new Error('Unauthorized')
@@ -11,6 +13,10 @@ export default async function Dashboard() {
     .select('*')
     .eq('user_id', session.user!.id)
 
+
+  console.log('user_id', session.user!.id)
+  console.log('habits', habits)
+  
   return (
     <>
       <form action={handleSignOut}>

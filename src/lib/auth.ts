@@ -9,17 +9,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     secret: process.env.AUTH_SECRET,
     callbacks: {
-        async jwt({ account, token }) {
+        async jwt({ account, token, user }) {
             if (account) {
-                token.userId = await supabaseAdmin
+                const { data } = await supabaseAdmin
                     .from('users')
-                    .eq('github_id', account.providerAccountId)
-                    
+                    .upsert({ github_id: account.providerAccountId, email: user.email, name: user.name })
+                    .select('id')
+                    .single()
+                token.userId = data!.id
             }
-        }
-
+            return token
+        },
         session({ session, token }) {
-            session.user.id = token.sub!
+            session.user.id = token.userId as string
             return session
         }
     }

@@ -13,10 +13,6 @@ export default async function Dashboard() {
     .select('*')
     .eq('user_id', session.user!.id)
 
-
-  console.log('user_id', session.user!.id)
-  console.log('habits', habits)
-  
   return (
     <>
       <form action={handleSignOut}>

@@ -13,7 +13,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             if (account) {
                 const { data } = await supabaseAdmin
                     .from('users')
-                    .upsert({ github_id: account.providerAccountId, email: user.email, name: user.name })
+                    .upsert(
+                        { github_id: account.providerAccountId, email: user.email, name: user.name }, 
+                        { onConflict: 'github_id' }
+                    )
                     .select('id')
                     .single()
                 token.userId = data!.id

@@ -1,6 +1,7 @@
 import { supabaseAdmin } from '@/lib/supabase-admin';
 import { auth } from '../../lib/auth';
 import { handleSignOut, handleCreate, deleteHabit, toggleHabit } from './actions';
+import { calculateStreak } from '@/lib/streak';
 
 export const dynamic = 'force-dynamic'
 
@@ -13,6 +14,17 @@ export default async function Dashboard() {
     .select('*')
     .eq('user_id', session.user!.id)
 
+  const { data: habit_logs } = await supabaseAdmin
+    .from('habit_logs')
+    .select('*')
+    .eq('user_id', session.user!.id)
+
+  const habitStreak = habits?.map((habit) => {
+    const logs = habit_logs!.filter((log) => log.habit_id === habit.id)
+    const completedDates = logs.map((log) => log.completed_date)
+    return { habit: habit, streak: calculateStreak(completedDates) }
+  })
+  
   return (
     <>
       <form action={handleSignOut}>

@@ -20,11 +20,11 @@ export default async function Dashboard() {
     .eq('user_id', session.user!.id)
 
   const habitStreak = habits?.map((habit) => {
-    const logs = habit_logs!.filter((log) => log.habit_id === habit.id)
-    const completedDates = logs.map((log) => log.completed_date)
-    return { habit: habit, streak: calculateStreak(completedDates) }
+    const logs = habit_logs?.filter((log) => log.habit_id === habit.id)
+    const completedDates = logs?.map((log) => log.completed_date)
+    return { habit: habit, streak: calculateStreak(completedDates!) }
   })
-  
+
   return (
     <>
       <form action={handleSignOut}>
@@ -36,13 +36,14 @@ export default async function Dashboard() {
         <input className='border border-white' name='name' placeholder='Habit name'></input>
         <button type='submit'>Add habit</button>
       </form>
-      {habits?.map((habit) => 
-          <div key={habit.id}>
-            <p className='text-white'>{habit.name}</p>
-            <form action={deleteHabit.bind(null, habit.id)}>
+      {habitStreak?.map((habit) => 
+          <div key={habit.habit.id}>
+            <p className='text-white'>{habit.habit.name}</p>
+            <p>Streak: {habit.streak}</p>
+            <form action={deleteHabit.bind(null, habit.habit.id)}>
               <button type='submit'>Delete</button>
             </form>
-            <form action={toggleHabit.bind(null, habit.id)}>
+            <form action={toggleHabit.bind(null, habit.habit.id)}>
               <button type='submit'>Done</button>
             </form>
           </div>

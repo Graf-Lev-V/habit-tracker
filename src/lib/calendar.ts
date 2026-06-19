@@ -5,6 +5,6 @@ export function calendar(completedDates: Array<string>) {
         dates.push(date.toISOString().split('T')[0])
         date.setDate(date.getDate() - 1);
     }
-    const result = dates.map((date) => completedDates.includes(date) ? {date: date, completed: true} : {date: date, completed: false})
+    const result = dates.map((date) => completedDates.includes(date) ? {date: date, completed: true} : {date: date, completed: false}).reverse()
     return result
 }

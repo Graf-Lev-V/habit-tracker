@@ -3,6 +3,7 @@ import { auth } from '../../lib/auth';
 import { handleSignOut, handleCreate, deleteHabit, toggleHabit } from './actions';
 import { calculateStreak } from '@/lib/streak';
 import { calendar } from '@/lib/calendar';
+import Image from 'next/image'
 
 export const dynamic = 'force-dynamic'
 
@@ -28,10 +29,14 @@ export default async function Dashboard() {
   })
 
   return (
-    <>
-      <form action={handleSignOut}>
-        <button>Sign Out</button>
-      </form>
+    <main>
+      <div className='flex'>
+        <Image src={session.user?.image ?? ''} alt='user image' width={32} height={32}/>
+        <p>{session.user?.name}</p>
+        <form className='ml-auto' action={handleSignOut}>
+          <button>Sign Out</button>
+        </form>
+      </div>
       <p>{session?.user?.name}</p>
       <p>{session?.user?.id}</p>
       <form action={handleCreate}>
@@ -63,6 +68,6 @@ export default async function Dashboard() {
             </div>
           </div>
       )}
-    </>
+    </main>
   )
 }

@@ -21,6 +21,12 @@ export default async function Dashboard() {
     .select('*')
     .eq('user_id', session.user!.id)
 
+  const { data: habit_logs_today } = await supabaseAdmin
+    .from('habit_logs')
+    .select('*')
+    .eq('user_id', session.user?.id)
+    .eq('completed_date', new Date().toISOString().split('T')[0])
+  
   const habitStreak = habits?.map((habit) => {
     const logs = habit_logs?.filter((log) => log.habit_id === habit.id)
     const completedDates = logs?.map((log) => log.completed_date)
@@ -40,6 +46,7 @@ export default async function Dashboard() {
       <div className='flex'> 
         <div>
           <p>{habits?.length}</p>
+          <p>{habit_logs_today?.length}</p>
           
         </div>
       </div>

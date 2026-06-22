@@ -37,6 +37,12 @@ export default async function Dashboard() {
           <button>Sign Out</button>
         </form>
       </div>
+      <div className='flex'> 
+        <div>
+          <p>{habits?.length}</p>
+          
+        </div>
+      </div>
       <p>{session?.user?.name}</p>
       <p>{session?.user?.id}</p>
       <form action={handleCreate}>

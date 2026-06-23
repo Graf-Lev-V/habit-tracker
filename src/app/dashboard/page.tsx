@@ -50,7 +50,7 @@ export default async function Dashboard() {
           <p>Completed habits today: {habitsToday?.length}</p>
           <p>Max streak: {bestStreak}</p>
       </div>
-      <form action={handleCreate}>
+      <form className='flex gap-5' action={handleCreate}>
         <input className='border border-white' name='name' placeholder='Habit name'></input>
         <button type='submit'>Add habit</button>
       </form>

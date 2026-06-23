@@ -4,6 +4,7 @@ import { handleSignOut, handleCreate, deleteHabit, toggleHabit } from './actions
 import { calculateStreak } from '@/lib/streak';
 import { calendar } from '@/lib/calendar';
 import Image from 'next/image'
+import { calculateBestStreak } from '@/lib/bestStreak';
 
 export const dynamic = 'force-dynamic'
 
@@ -21,15 +22,16 @@ export default async function Dashboard() {
     .select('*')
     .eq('user_id', session.user!.id)
 
-  const { data: habit_logs_today } = await supabaseAdmin
-    .from('habit_logs')
-    .select('*')
-    .eq('user_id', session.user?.id)
-    .eq('completed_date', new Date().toISOString().split('T')[0])
-  
+
+  const habitsToday = [...new Set(habit_logs?.filter((log) => log.completed_date === new Date().toISOString().split('T')[0])
+    .map((log) => log.habit_id))]
+
+  let bestStreak: number = 0;
   const habitStreak = habits?.map((habit) => {
     const logs = habit_logs?.filter((log) => log.habit_id === habit.id)
     const completedDates = logs?.map((log) => log.completed_date)
+    const maxStreak = calculateBestStreak(completedDates!)
+    bestStreak = bestStreak > maxStreak ? bestStreak : maxStreak
     const completedCalendar = calendar(completedDates!)
     return { habit: habit, streak: calculateStreak(completedDates!), calendar: completedCalendar }
   })
@@ -45,9 +47,9 @@ export default async function Dashboard() {
       </div>
       <div className='flex'> 
         <div>
-          <p>{habits?.length}</p>
-          <p>{habit_logs_today?.length}</p>
-          
+          <p>Habits: {habits?.length}</p>
+          <p>Completed habits today: {habitsToday?.length}</p>
+          <p>Max streak: {bestStreak}</p>
         </div>
       </div>
       <p>{session?.user?.name}</p>

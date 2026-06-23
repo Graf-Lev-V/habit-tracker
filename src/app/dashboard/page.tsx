@@ -45,15 +45,11 @@ export default async function Dashboard() {
           <button>Sign Out</button>
         </form>
       </div>
-      <div className='flex'> 
-        <div>
+      <div className='flex gap-5'> 
           <p>Habits: {habits?.length}</p>
           <p>Completed habits today: {habitsToday?.length}</p>
           <p>Max streak: {bestStreak}</p>
-        </div>
       </div>
-      <p>{session?.user?.name}</p>
-      <p>{session?.user?.id}</p>
       <form action={handleCreate}>
         <input className='border border-white' name='name' placeholder='Habit name'></input>
         <button type='submit'>Add habit</button>

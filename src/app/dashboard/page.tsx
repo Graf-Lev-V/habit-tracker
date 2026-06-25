@@ -59,7 +59,7 @@ export default async function Dashboard() {
           <div key={habit.habit.id}>
             <p className='text-white'>{habit.habit.name}</p>
             <p>Streak: {habit.streak}</p>
-            <p>Thirty-day complection: {habit.thirtyDay}</p>
+            <p>Thirty-day complection: {habit.thirtyDay}%</p>
             <form action={deleteHabit.bind(null, habit.habit.id)}>
               <button type='submit'>Delete</button>
             </form>

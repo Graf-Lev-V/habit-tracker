@@ -5,6 +5,7 @@ import { calculateStreak } from '@/lib/streak';
 import { calendar } from '@/lib/calendar';
 import Image from 'next/image'
 import { calculateBestStreak } from '@/lib/bestStreak';
+import ThirtyDayCompletion from '@/lib/thirtyDay';
 
 export const dynamic = 'force-dynamic'
 
@@ -33,7 +34,7 @@ export default async function Dashboard() {
     const maxStreak = calculateBestStreak(completedDates!)
     bestStreak = bestStreak > maxStreak ? bestStreak : maxStreak
     const completedCalendar = calendar(completedDates!)
-    return { habit: habit, streak: calculateStreak(completedDates!), calendar: completedCalendar }
+    return { habit: habit, streak: calculateStreak(completedDates!), thirtyDay: ThirtyDayCompletion(completedDates!), calendar: completedCalendar }
   })
 
   return (
@@ -58,6 +59,7 @@ export default async function Dashboard() {
           <div key={habit.habit.id}>
             <p className='text-white'>{habit.habit.name}</p>
             <p>Streak: {habit.streak}</p>
+            <p>Thirty-day complection: {habit.thirtyDay}</p>
             <form action={deleteHabit.bind(null, habit.habit.id)}>
               <button type='submit'>Delete</button>
             </form>

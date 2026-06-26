@@ -1,12 +1,12 @@
 import { supabaseAdmin } from '@/lib/supabase-admin';
 import { auth } from '../../lib/auth';
-import { handleSignOut, deleteHabit, toggleHabit } from './actions';
+import { deleteHabit, toggleHabit } from './actions';
 import { calculateStreak } from '@/lib/streak';
 import { calendar } from '@/lib/calendar';
-import Image from 'next/image'
 import { calculateBestStreak } from '@/lib/bestStreak';
 import ThirtyDayCompletion from '@/lib/thirtyDay';
 import AddHabitForm from '@/components/AddHabitForm';
+import Header from '@/components/Header';
 
 export const dynamic = 'force-dynamic'
 
@@ -40,13 +40,7 @@ export default async function Dashboard() {
 
   return (
     <main>
-      <div className='flex'>
-        <Image src={session.user?.image ?? ''} alt='user image' width={32} height={32}/>
-        <p>{session.user?.name}</p>
-        <form className='ml-auto' action={handleSignOut}>
-          <button>Sign Out</button>
-        </form>
-      </div>
+      <Header session={session}/>
       <div className='flex gap-5'> 
           <p>Habits: {habits?.length}</p>
           <p>Completed habits today: {habitsToday?.length}</p>

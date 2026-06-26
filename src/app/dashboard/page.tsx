@@ -1,11 +1,12 @@
 import { supabaseAdmin } from '@/lib/supabase-admin';
 import { auth } from '../../lib/auth';
-import { handleSignOut, handleCreate, deleteHabit, toggleHabit } from './actions';
+import { handleSignOut, deleteHabit, toggleHabit } from './actions';
 import { calculateStreak } from '@/lib/streak';
 import { calendar } from '@/lib/calendar';
 import Image from 'next/image'
 import { calculateBestStreak } from '@/lib/bestStreak';
 import ThirtyDayCompletion from '@/lib/thirtyDay';
+import AddHabitForm from '@/components/AddHabitForm';
 
 export const dynamic = 'force-dynamic'
 
@@ -51,10 +52,6 @@ export default async function Dashboard() {
           <p>Completed habits today: {habitsToday?.length}</p>
           <p>Max streak: {bestStreak}</p>
       </div>
-      <form className='flex gap-5' action={handleCreate}>
-        <input className='border border-white' name='name' placeholder='Habit name'></input>
-        <button type='submit'>Add habit</button>
-      </form>
       {habitStreak?.map((habit) => 
           <div key={habit.habit.id}>
             <p className='text-white'>{habit.habit.name}</p>
@@ -81,6 +78,7 @@ export default async function Dashboard() {
             </div>
           </div>
       )}
+      <AddHabitForm />
     </main>
   )
 }

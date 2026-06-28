@@ -1,13 +1,7 @@
-type HabitCardProps = {
-    habit: {
-        habit: habit, 
-        streak: calculateStreak(completedDates!), 
-        thirtyDay: ThirtyDayCompletion(completedDates!), 
-        calendar: completedCalendar
-    }
-}
+import type { Habit } from '@/types/index'
+import { deleteHabit, toggleHabit } from "@/app/dashboard/actions"
 
-export default function HabitCard(habit: object) {
+export default function HabitCard({ habit }: Habit) {
     return (
         <div>
             <p className='text-white'>{habit.habit.name}</p>

@@ -1,6 +1,5 @@
 import { supabaseAdmin } from '@/lib/supabase-admin';
 import { auth } from '../../lib/auth';
-import { deleteHabit, toggleHabit } from './actions';
 import { calculateStreak } from '@/lib/streak';
 import { calendar } from '@/lib/calendar';
 import { calculateBestStreak } from '@/lib/bestStreak';

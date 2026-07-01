@@ -8,11 +8,11 @@ export default function HabitCard({ habit }: Habit) {
             <p className='text-white/75'>Streak: {habit.streak}</p>
             <p className='text-white/75'>Thirty-day complection: {habit.thirtyDay}%</p>
             <div className='flex gap-2 my-2'>
-                <form className='bg-green-700 w-min py-2 px-4 rounded' action={toggleHabit.bind(null, habit.habit.id)}>
-                    <button type='submit'>Done</button>
+                <form action={toggleHabit.bind(null, habit.habit.id)}>
+                    <button className='bg-green-700 hover:bg-green-800 transition-colors w-min py-2 px-4 rounded' type='submit'>Done</button>
                 </form>
-                <form className='bg-red-700 w-min py-2 px-4 rounded' action={deleteHabit.bind(null, habit.habit.id)}>
-                    <button type='submit'>Delete</button>
+                <form action={deleteHabit.bind(null, habit.habit.id)}>
+                    <button className='bg-red-700 hover:bg-red-800 transition-colors w-min py-2 px-4 rounded' type='submit'>Delete</button>
                 </form>
             </div>
             <div style={{

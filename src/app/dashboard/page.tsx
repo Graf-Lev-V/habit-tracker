@@ -38,17 +38,17 @@ export default async function Dashboard() {
   })
 
   return (
-    <main className='p-4 flex flex-col items-center'>
+    <main className='p-4 flex flex-col items-center gap-4'>
       <div className='grid grid-cols-3 gap-5'>
-        <div className='px-8 py-6 rounded flex flex-col gap-2 text-center' style={{background: '#333333'}}>
+        <div className='px-8 py-6 rounded flex flex-col gap-2 text-center bg-neutral-700'>
           <p className='text-white/80'>Habits</p>
           <p className='text-4xl'>{habits?.length}</p>
         </div>
-        <div className='px-8 py-6 rounded flex flex-col gap-2 text-center' style={{background: '#333333'}}>
+        <div className='px-8 py-6 rounded flex flex-col gap-2 text-center bg-neutral-700'>
           <p className='text-white/80'>Completed today</p>
           <p className='text-4xl'>{habitsToday?.length}</p>
         </div>
-        <div className='px-8 py-6 rounded flex flex-col gap-2 text-center' style={{background: '#333333'}}>
+        <div className='px-8 py-6 rounded flex flex-col gap-2 text-center bg-neutral-700'>
           <p className='text-white/80'>Max streak</p>
           <p className='text-4xl'>{bestStreak}</p>
         </div>

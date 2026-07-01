@@ -3,16 +3,18 @@ import { deleteHabit, toggleHabit } from "@/app/dashboard/actions"
 
 export default function HabitCard({ habit }: Habit) {
     return (
-        <div className='rounded p-4 bg-neutral-800'>
+        <div className='rounded p-4 bg-neutral-800 flex flex-col'>
             <p className='text-white text-xl'>{habit.habit.name}</p>
             <p className='text-white/75'>Streak: {habit.streak}</p>
             <p className='text-white/75'>Thirty-day complection: {habit.thirtyDay}%</p>
-            <form className='bg-green-700 w-min py-2 px-4' action={toggleHabit.bind(null, habit.habit.id)}>
-                <button type='submit'>Done</button>
-            </form>
-            <form className='bg-red-700 w-min py-2 px-4' action={deleteHabit.bind(null, habit.habit.id)}>
-                <button type='submit'>Delete</button>
-            </form>
+            <div className='flex gap-2 my-2'>
+                <form className='bg-green-700 w-min py-2 px-4' action={toggleHabit.bind(null, habit.habit.id)}>
+                    <button type='submit'>Done</button>
+                </form>
+                <form className='bg-red-700 w-min py-2 px-4' action={deleteHabit.bind(null, habit.habit.id)}>
+                    <button type='submit'>Delete</button>
+                </form>
+            </div>
             <div style={{
                 display: 'grid', 
                 gridTemplateRows: 'repeat(7, min-content)', 

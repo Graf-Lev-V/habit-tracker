@@ -3,7 +3,7 @@ import { deleteHabit, toggleHabit } from "@/app/dashboard/actions"
 
 export default function HabitCard({ habit }: Habit) {
     return (
-        <div className='rounded p-4 bg-neutral-800 flex flex-col'>
+        <div className='rounded p-4 bg-neutral-800 hover:brightness-110 flex flex-col shadow-lg'>
             <p className='text-white text-xl'>{habit.habit.name}</p>
             <p className='text-white/75'>Streak: {habit.streak}</p>
             <p className='text-white/75'>Thirty-day complection: {habit.thirtyDay}%</p>

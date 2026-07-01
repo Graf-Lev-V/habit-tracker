@@ -13,7 +13,7 @@ export default function AddHabitForm() {
             {formState &&
             <form className='flex gap-5' action={handleCreate}>
                 <input className='border border-white/50 bg-neutral-800 p-4 rounded' name='name' placeholder='Habit name'></input>
-                <button type='submit'>Add habit</button>
+                <button className="bg-green-700 py-2 px-4 rounded" type='submit'>Add habit</button>
             </form>}
         </div>
     )

@@ -8,11 +8,16 @@ export async function handleSignOut() {
     await signOut({ redirectTo: '/login' })
 }
 
-export async function handleCreate(formData: FormData) {
+export async function handleCreate(prevState: {error: string | null}, formData: FormData) {
+    if (!formData.get('name')?.toString()) return { error: 'Habit name is required' }
+    if (formData.get('name')!.toString().length > 50) return { error: 'Habit name must be no more than 50 characters' }
     await createHabit(formData.get('name') as string)
+    return { error: null }
 }
 
 export async function createHabit(name: string) {
+    if (!name.trim()) throw new Error('Habit name is required')
+    if (name.trim().length > 50) throw new Error('Habit name must be no more than 50 characters')
     const session = await auth()
     if (!session) throw new Error('Unauthorized')
     await supabaseAdmin

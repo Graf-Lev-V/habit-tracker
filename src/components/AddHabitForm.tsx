@@ -1,12 +1,17 @@
 'use client'
 
 import { handleCreate } from "@/app/dashboard/actions"
-import { useActionState, useState } from "react"
+import { useActionState, useEffect, useRef, useState } from "react"
 
 export default function AddHabitForm() {
     
     const [formState, setFormState] = useState<boolean>(false)
     const [state, formAction] = useActionState(handleCreate, { error: null })
+    const errorRef = useRef<HTMLParagraphElement>(null)
+    
+    useEffect(() => {
+        if (state.error) errorRef.current?.scrollIntoView()
+    }, [state.error])
 
     return (
         <div className="flex flex-col gap-4 items-center">
@@ -14,7 +19,7 @@ export default function AddHabitForm() {
             {formState &&
             <form className='flex gap-5 relative' action={formAction}>
                 <input className='border border-white/50 bg-neutral-800 p-4 rounded relative shadow-lg' name='name' placeholder='Habit name' required maxLength={50}></input>
-                {state.error && <p className="text-red-500 text-sm absolute top-full">{state.error}</p>}
+                {state.error && <p className="text-red-500 text-sm absolute top-full" ref={errorRef}>{state.error}</p>}
                 <button className="bg-green-700 hover:bg-green-800 transition-colors py-2 px-4 rounded shadow-lg" type='submit'>Add habit</button>
             </form>}
         </div>

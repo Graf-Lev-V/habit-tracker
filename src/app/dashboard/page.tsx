@@ -56,6 +56,7 @@ export default async function Dashboard() {
       {habitStreak?.map((habit) => 
           <HabitCard key={habit.habit.id} habit={habit}/>
       )}
+      {(!habitStreak || habitStreak.length === 0) && <p>No habits yet. Add your first one to start tracking your progress.</p>}
       <AddHabitForm />
     </main>
   )

@@ -8,10 +8,12 @@ async function SignIn() {
 
 export default function Login() {
   return (
-    <>
-      <form action={SignIn}>
-        <button>Sign In</button>
-      </form>
-    </>
+    <main className='flex h-screen justify-center items-center'>
+      <div className='bg-neutral-800 p-4 rounded shadow-lg'>
+        <form action={SignIn}>
+          <button>Sign In</button>
+        </form>
+      </div>
+    </main>
   );
 }

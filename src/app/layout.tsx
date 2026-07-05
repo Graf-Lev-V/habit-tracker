@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Habit Traker",
-  description: "Traker for habits",
+  title: "Habit Traсker",
+  description: "Traсker for habits",
 };
 
 export default function RootLayout({

@@ -15,25 +15,25 @@ export default function Loading() {
                     <div className="h-[40] w-12 bg-neutral-600 rounded animate-pulse"></div>
                 </div>
             </div>
-            <div className='rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse gap-3'>
-                <div className="h-6 w-32 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="h-4 w-24 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="h-4 w-40 bg-neutral-700 rounded animate-pulse"></div>
+            <div className='rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse gap-2'>
+                <div className="h-5 w-32 bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-5 w-17 bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-5 w-47 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="flex gap-2">
-                    <div className="h-9 w-20 bg-neutral-700 rounded animate-pulse"></div>
-                    <div className="h-9 w-20 bg-neutral-700 rounded animate-pulse"></div>
+                    <div className="h-10 w-18 bg-neutral-700 rounded animate-pulse"></div>
+                    <div className="h-10 w-18 bg-neutral-700 rounded animate-pulse"></div>
                 </div>
-                <div className="h-24 w-[844] bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-[108] w-[844] bg-neutral-700 rounded animate-pulse"></div>
             </div>
-            <div className='rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse gap-3'>
-                <div className="h-6 w-32 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="h-4 w-24 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="h-4 w-40 bg-neutral-700 rounded animate-pulse"></div>
+            <div className='rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse gap-2'>
+                <div className="h-5 w-32 bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-5 w-17 bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-5 w-47 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="flex gap-2">
-                    <div className="h-9 w-20 bg-neutral-700 rounded animate-pulse"></div>
-                    <div className="h-9 w-20 bg-neutral-700 rounded animate-pulse"></div>
+                    <div className="h-10 w-18 bg-neutral-700 rounded animate-pulse"></div>
+                    <div className="h-10 w-18 bg-neutral-700 rounded animate-pulse"></div>
                 </div>
-                <div className="h-24 w-[844] bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-[108] w-[844] bg-neutral-700 rounded animate-pulse"></div>
             </div>
         </main>
     )

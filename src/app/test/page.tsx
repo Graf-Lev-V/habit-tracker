@@ -1,4 +1,4 @@
-export default function Loading() {
+export default function Test() {
     return (
         <main className='p-4 flex flex-col items-center gap-4'>
             <div className='grid grid-cols-3 gap-5'>

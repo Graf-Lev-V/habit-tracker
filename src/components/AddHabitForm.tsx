@@ -6,7 +6,7 @@ import { useActionState, useEffect, useRef, useState } from "react"
 export default function AddHabitForm() {
     
     const [formState, setFormState] = useState<boolean>(false)
-    const [state, formAction] = useActionState(handleCreate, { error: null, success: 0 })
+    const [state, formAction, isPending] = useActionState(handleCreate, { error: null, success: 0 })
     const prevState = useRef<number>(0)
     const errorRef = useRef<HTMLParagraphElement>(null)
     const formRef = useRef<HTMLFormElement>(null)
@@ -27,8 +27,10 @@ export default function AddHabitForm() {
             <form className='flex gap-5 relative' action={formAction} ref={formRef}>
                 <input className='border border-white/50 bg-neutral-800 p-4 rounded relative shadow-lg' name='name' placeholder='Habit name' required maxLength={50}></input>
                 {state.error && <p className="text-red-500 text-sm absolute top-full" ref={errorRef}>{state.error}</p>}
-                <button className="bg-green-700 hover:bg-green-800 transition-colors py-2 px-4 rounded shadow-lg cursor-pointer" type='submit'>Add habit</button>
+                <button className="bg-green-700 hover:bg-green-800 transition-colors py-2 px-4 rounded shadow-lg cursor-pointer" type='submit' disabled={isPending}>Add habit</button>
             </form>}
         </div>
     )
 }
+
+//ДОЛГО ГРУЗИТСЯ ПРИВЫЧКА, ЗАГРУЗКА ПОКА ГРУЗИТСЯ, АДАПТАЦИЯ

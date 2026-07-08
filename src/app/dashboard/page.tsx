@@ -13,17 +13,21 @@ export default async function Dashboard() {
   const session = await auth();
   if (!session) throw new Error('Unauthorized')
 
-  const { data: habits } = await supabaseAdmin
+  console.time('queries')
+  const [{ data: habits }, { data: habit_logs }] = await Promise.all([
+    supabaseAdmin
     .from('habits')
     .select('*')
-    .eq('user_id', session.user!.id)
-
-  const { data: habit_logs } = await supabaseAdmin
+    .eq('user_id', session.user!.id),
+    
+    supabaseAdmin
     .from('habit_logs')
     .select('*')
     .eq('user_id', session.user!.id)
+  ])
+  console.timeEnd('queries')
 
-
+  console.time('calc')
   const habitsToday = [...new Set(habit_logs?.filter((log) => log.completed_date === new Date().toISOString().split('T')[0])
     .map((log) => log.habit_id))]
 
@@ -36,6 +40,7 @@ export default async function Dashboard() {
     const completedCalendar = calendar(completedDates!)
     return { habit: habit, streak: calculateStreak(completedDates!), thirtyDay: ThirtyDayCompletion(completedDates!), calendar: completedCalendar }
   })
+  console.timeEnd('calc')
 
   return (
     <main className='p-4 flex flex-col items-center gap-4'>

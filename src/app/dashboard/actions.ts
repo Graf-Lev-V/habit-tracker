@@ -9,13 +9,17 @@ export async function handleSignOut() {
 }
 
 export async function handleCreate(prevState: { error: string | null, success: number }, formData: FormData) {
+    console.time('handle')
     if (!formData.get('name')?.toString()) return { error: 'Habit name is required', success: prevState.success }
     if (formData.get('name')!.toString().length > 50) return { error: 'Habit name must be no more than 50 characters', success: prevState.success }
+    console.timeEnd('handle')
     await createHabit(formData.get('name') as string)
     return { error: null, success: prevState.success + 1 }
 }
 
+
 export async function createHabit(name: string) {
+    console.time('create')
     if (!name.trim()) throw new Error('Habit name is required')
     if (name.trim().length > 50) throw new Error('Habit name must be no more than 50 characters')
     const session = await auth()
@@ -23,6 +27,7 @@ export async function createHabit(name: string) {
     await supabaseAdmin
         .from('habits')
         .insert({ name: name, user_id: session.user!.id })
+    console.timeEnd('create')
     revalidatePath('/dashboard')
 }
 

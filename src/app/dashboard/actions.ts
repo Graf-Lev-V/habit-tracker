@@ -19,11 +19,14 @@ export async function handleCreate(prevState: { error: string | null, success: n
 
 
 export async function createHabit(name: string) {
-    console.time('create')
+    
     if (!name.trim()) throw new Error('Habit name is required')
     if (name.trim().length > 50) throw new Error('Habit name must be no more than 50 characters')
+    
     const session = await auth()
+    
     if (!session) throw new Error('Unauthorized')
+    console.time('create')
     await supabaseAdmin
         .from('habits')
         .insert({ name: name, user_id: session.user!.id })

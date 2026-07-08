@@ -8,11 +8,11 @@ export async function handleSignOut() {
     await signOut({ redirectTo: '/login' })
 }
 
-export async function handleCreate(prevState: {error: string | null}, formData: FormData) {
-    if (!formData.get('name')?.toString()) return { error: 'Habit name is required' }
-    if (formData.get('name')!.toString().length > 50) return { error: 'Habit name must be no more than 50 characters' }
+export async function handleCreate(prevState: { error: string | null, success: number }, formData: FormData) {
+    if (!formData.get('name')?.toString()) return { error: 'Habit name is required', success: prevState.success }
+    if (formData.get('name')!.toString().length > 50) return { error: 'Habit name must be no more than 50 characters', success: prevState.success }
     await createHabit(formData.get('name') as string)
-    return { error: null }
+    return { error: null, success: prevState.success + 1 }
 }
 
 export async function createHabit(name: string) {

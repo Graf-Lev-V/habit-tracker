@@ -1,5 +1,5 @@
 import type { Habit } from '@/types/index'
-import { deleteHabit, toggleHabit } from "@/app/dashboard/actions"
+import HabitActions from './HabitActions'
 
 export default function HabitCard({ habit }: Habit) {
     return (
@@ -7,14 +7,7 @@ export default function HabitCard({ habit }: Habit) {
             <p className='text-white text-xl'>{habit.habit.name}</p>
             <p className='text-white/75'>Streak: {habit.streak}</p>
             <p className='text-white/75'>Thirty-day complection: {habit.thirtyDay}%</p>
-            <div className='flex gap-2 my-2'>
-                <form action={toggleHabit.bind(null, habit.habit.id)}>
-                    <button className='bg-green-700 hover:bg-green-800 transition-colors w-min py-2 px-4 rounded cursor-pointer' type='submit'>Done</button>
-                </form>
-                <form action={deleteHabit.bind(null, habit.habit.id)}>
-                    <button className='bg-red-700 hover:bg-red-800 transition-colors w-min py-2 px-4 rounded cursor-pointer' type='submit'>Delete</button>
-                </form>
-            </div>
+            <HabitActions id={habit.habit.id}/>
             <div style={{
                 display: 'grid', 
                 gridTemplateRows: 'repeat(7, min-content)', 

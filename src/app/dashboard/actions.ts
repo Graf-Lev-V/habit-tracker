@@ -17,7 +17,6 @@ export async function handleCreate(prevState: { error: string | null, success: n
     return { error: null, success: prevState.success + 1 }
 }
 
-
 export async function createHabit(name: string) {
     
     if (!name.trim()) throw new Error('Habit name is required')
@@ -34,18 +33,7 @@ export async function createHabit(name: string) {
     revalidatePath('/dashboard')
 }
 
-export async function deleteHabit(id: string) {
-    const session = await auth()
-    if (!session) throw new Error('Unauthorized')
-    await supabaseAdmin
-        .from('habits')
-        .delete()
-        .eq('id', id)
-        .eq('user_id', session.user!.id)
-    revalidatePath('/dashboard')
-}
-
-export async function toggleHabit(id: string) {
+export async function toggleHabit(id: string, prevState: null, formData: FormData) {
     const session = await auth()
     if (!session) throw new Error('Unauthorized')
     await supabaseAdmin
@@ -56,4 +44,17 @@ export async function toggleHabit(id: string) {
             completed_date: new Date().toISOString().split('T')[0] 
         })
     revalidatePath('/dashboard')
+    return null
+}
+
+export async function deleteHabit(id: string, prevState: null, formData: FormData) {
+    const session = await auth()
+    if (!session) throw new Error('Unauthorized')
+    await supabaseAdmin
+        .from('habits')
+        .delete()
+        .eq('id', id)
+        .eq('user_id', session.user!.id)
+    revalidatePath('/dashboard')
+    return null
 }

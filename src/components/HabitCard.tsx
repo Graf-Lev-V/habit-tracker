@@ -1,13 +1,17 @@
 import type { Habit } from '@/types/index'
-import HabitActions from './HabitActions'
+import HabitToggle from './HabitToggle'
+import HabitDelete from './HabitDelete'
 
 export default function HabitCard({ habit }: Habit) {
     return (
         <div className='rounded p-4 bg-neutral-800 hover:brightness-110 flex flex-col shadow-lg'>
-            <p className='text-white text-xl'>{habit.habit.name}</p>
+            <div className='flex justify-between'>
+                <p className='text-white text-xl'>{habit.habit.name}</p>
+                <HabitDelete id={habit.habit.id} />
+            </div>
             <p className='text-white/75'>Streak: {habit.streak}</p>
             <p className='text-white/75'>Thirty-day complection: {habit.thirtyDay}%</p>
-            <HabitActions id={habit.habit.id}/>
+            <HabitToggle id={habit.habit.id} />
             <div style={{
                 display: 'grid', 
                 gridTemplateRows: 'repeat(7, min-content)', 

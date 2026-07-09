@@ -14,10 +14,10 @@ export default function HabitActions({ id }: { id: string }) {
     return (
         <div className='flex gap-2 my-2'>
             <form action={formActionToggle}>
-                <button className='bg-green-700 hover:bg-green-800 transition-colors w-min py-2 px-4 rounded cursor-pointer' type='submit'>Done</button>
+                <button className='bg-green-700 hover:bg-green-800 disabled:hover:bg-green-700 transition-colors w-min py-2 px-4 rounded cursor-pointer disabled:cursor-default' type='submit' disabled={isPendingToggle}>{isPendingToggle ? 'Saving...' : 'Done'}</button>
             </form>
             <form action={formActionDelete}>
-                <button className='bg-red-700 hover:bg-red-800 transition-colors w-min py-2 px-4 rounded cursor-pointer' type='submit'>Delete</button>
+                <button className='bg-red-700 hover:bg-red-800 disabled:hover:bg-red-700 transition-colors w-min py-2 px-4 rounded cursor-pointer disabled:cursor-default' type='submit' disabled={isPendingDelete}>{isPendingDelete ? 'Deleting...' : 'Delete'}</button>
             </form>
         </div>
     )

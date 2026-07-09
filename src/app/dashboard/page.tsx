@@ -17,7 +17,8 @@ export default async function Dashboard() {
     supabaseAdmin
     .from('habits')
     .select('*')
-    .eq('user_id', session.user!.id),
+    .eq('user_id', session.user!.id)
+    .order('created_at', { ascending: true }),
     
     supabaseAdmin
     .from('habit_logs')

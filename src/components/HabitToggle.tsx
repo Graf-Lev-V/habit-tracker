@@ -10,7 +10,7 @@ export default function HabitToggle({ id }: { id: string }) {
 
     return (
         <form className="my-2" action={formActionToggle}>
-            <button className='bg-green-700 hover:bg-green-800 disabled:hover:bg-green-700 transition-colors w-min py-2 px-4 rounded cursor-pointer disabled:cursor-default' type='submit' disabled={isPendingToggle}>{isPendingToggle ? 'Saving...' : 'Done'}</button>
+            <button className='bg-green-700 hover:brightness-80 disabled:hover:brightness-100 transition-colors w-min py-2 px-4 rounded cursor-pointer disabled:cursor-default' type='submit' disabled={isPendingToggle}>{isPendingToggle ? 'Saving...' : 'Done'}</button>
         </form>
     )
 }

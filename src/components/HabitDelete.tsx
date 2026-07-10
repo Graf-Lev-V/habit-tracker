@@ -14,7 +14,7 @@ export default function HabitDelete({ id }: { id: string }) {
     return (
         <button 
         className={confirmDelete ? 
-            'bg-red-700 hover:bg-red-800 disabled:hover:bg-red-700 transition-colors w-min p-2 rounded cursor-pointer disabled:cursor-default' :
+            'bg-red-700 hover:brightness-80 disabled:hover:brightness-100 transition-colors w-min p-2 rounded cursor-pointer disabled:cursor-default' :
             'bg-neutral-700 hover:brightness-80 transition-colors w-min p-2 rounded cursor-pointer'
         }
         type={'button'}

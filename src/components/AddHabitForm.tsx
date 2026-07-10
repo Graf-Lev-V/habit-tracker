@@ -22,12 +22,12 @@ export default function AddHabitForm() {
 
     return (
         <div className="flex flex-col gap-4 items-center">
-            <button className="w-12 h-12 border border-white/25 bg-neutral-800 hover:bg-neutral-900 cursor-pointer transition-colors rounded text-xl shadow-lg" onClick={() => setFormState(!formState)}>+</button>
+            <button className="w-12 h-12 border border-white/25 bg-neutral-800 hover:brightness-80 cursor-pointer transition-colors rounded text-xl shadow-lg" onClick={() => setFormState(!formState)}>+</button>
             {formState &&
             <form className='flex gap-5 relative' action={formAction} ref={formRef}>
                 <input className='border border-white/50 bg-neutral-800 p-4 rounded relative shadow-lg' name='name' placeholder='Habit name' required maxLength={50}></input>
                 {state.error && <p className="text-red-500 text-sm absolute top-full" ref={errorRef}>{state.error}</p>}
-                <button className="bg-green-700 hover:bg-green-800 disabled:bg-green-700 transition-colors py-2 px-4 rounded shadow-lg cursor-pointer disabled:cursor-default" type='submit' disabled={isPending}>{isPending ? 'Adding...' : 'Add habit'}</button>
+                <button className="bg-green-700 hover:brightness-80 disabled:brightness-100 transition-colors py-2 px-4 rounded shadow-lg cursor-pointer disabled:cursor-default" type='submit' disabled={isPending}>{isPending ? 'Adding...' : 'Add habit'}</button>
             </form>}
         </div>
     )

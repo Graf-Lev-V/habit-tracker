@@ -3,10 +3,10 @@
 import { toggleHabit } from "@/app/dashboard/actions"
 import { useActionState } from "react"
 
-export default function HabitActions({ id }: { id: string }) {
+export default function HabitToggle({ id }: { id: string }) {
 
     const toggleWithId = toggleHabit.bind(null, id)
-    const [stateToggle, formActionToggle, isPendingToggle] = useActionState(toggleWithId, null)
+    const [, formActionToggle, isPendingToggle] = useActionState(toggleWithId, null)
 
     return (
         <form className="my-2" action={formActionToggle}>

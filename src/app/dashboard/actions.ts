@@ -29,7 +29,7 @@ export async function createHabit(name: string) {
     revalidatePath('/dashboard')
 }
 
-export async function toggleHabit(id: string, prevState: null, formData: FormData) {
+export async function toggleHabit(id: string) {
     const session = await auth()
     if (!session) throw new Error('Unauthorized')
     await supabaseAdmin
@@ -43,7 +43,7 @@ export async function toggleHabit(id: string, prevState: null, formData: FormDat
     return null
 }
 
-export async function deleteHabit(id: string, prevState: null, formData: FormData) {
+export async function deleteHabit(id: string) {
     const session = await auth()
     if (!session) throw new Error('Unauthorized')
     await supabaseAdmin

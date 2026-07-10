@@ -10,7 +10,7 @@ export default async function Header() {
                 <Image className='rounded-full' priority src={session?.user?.image ?? ''} alt='user image' width={64} height={64}/>
                 <p>{session?.user?.name}</p>
                 <form className='ml-auto' action={handleSignOut}>
-                    <button className='p-2 border border-white/20 bg-neutral-800 hover:bg-neutral-900 transition-colors rounded cursor-pointer'>Sign Out</button>
+                    <button className='p-2 border border-white/20 bg-neutral-800 hover:brightness-80 transition-colors rounded cursor-pointer'>Sign Out</button>
                 </form>
             </div>
         </header>

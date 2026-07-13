@@ -9,7 +9,7 @@ export default function SignOut() {
 
     return (
         <form className='ml-auto' action={formAction}>
-            <button className='p-2 border border-white/20 bg-neutral-800 hover:brightness-80 disabled:hover:brightness-100 transition-colors rounded cursor-pointer disabled:cursor-default min-w-[110px]' disabled={isPending}>
+            <button className='p-2 border border-white/20 bg-neutral-800 hover:brightness-80 disabled:hover:brightness-100 transition-colors rounded cursor-pointer disabled:cursor-default min-w-[100px] text-sm' disabled={isPending}>
                 {isPending ? 'Signing out...' : 'Sign Out'}
             </button>
         </form>

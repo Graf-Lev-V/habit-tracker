@@ -11,7 +11,8 @@ export async function handleSignOut() {
 export async function handleCreate(prevState: { error: string | null, success: number }, formData: FormData) {
     if (!formData.get('name')?.toString()) return { error: 'Habit name is required', success: prevState.success }
     if (formData.get('name')!.toString().length > 50) return { error: 'Habit name must be no more than 50 characters', success: prevState.success }
-    await createHabit(formData.get('name') as string)
+    const error = await createHabit(formData.get('name') as string)
+    if (error) return { error: 'Something went wrong. Please try again.', success: prevState.success }
     return { error: null, success: prevState.success + 1 }
 }
 
@@ -23,16 +24,17 @@ export async function createHabit(name: string) {
     const session = await auth()
     
     if (!session) throw new Error('Unauthorized')
-    await supabaseAdmin
+    const { error } = await supabaseAdmin
         .from('habits')
         .insert({ name: name, user_id: session.user!.id })
     revalidatePath('/dashboard')
+    return error
 }
 
 export async function toggleHabit(id: string) {
     const session = await auth()
     if (!session) throw new Error('Unauthorized')
-    await supabaseAdmin
+    const { error } = await supabaseAdmin
         .from('habit_logs')
         .insert({ 
             habit_id: id, 
@@ -40,17 +42,17 @@ export async function toggleHabit(id: string) {
             completed_date: new Date().toISOString().split('T')[0] 
         })
     revalidatePath('/dashboard')
-    return null
+    return error?.message ?? null
 }
 
 export async function deleteHabit(id: string) {
     const session = await auth()
     if (!session) throw new Error('Unauthorized')
-    await supabaseAdmin
+    const { error } = await supabaseAdmin
         .from('habits')
         .delete()
         .eq('id', id)
         .eq('user_id', session.user!.id)
     revalidatePath('/dashboard')
-    return null
+    return error?.message ?? null
 }

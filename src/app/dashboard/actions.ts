@@ -31,7 +31,7 @@ export async function createHabit(name: string) {
     return error
 }
 
-export async function toggleHabit(id: string) {
+export async function toggleHabit(id: string, prevState: { error: string | null, attempt: number }) {
     const session = await auth()
     if (!session) throw new Error('Unauthorized')
     const { error } = await supabaseAdmin
@@ -42,7 +42,7 @@ export async function toggleHabit(id: string) {
             completed_date: new Date().toISOString().split('T')[0] 
         })
     revalidatePath('/dashboard')
-    return error?.message ?? null
+    return { error: error?.message ?? null, attempt: prevState.attempt + 1 }
 }
 
 export async function deleteHabit(id: string, prevState: { error: string | null, attempt: number }) {

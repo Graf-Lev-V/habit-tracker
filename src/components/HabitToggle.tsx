@@ -7,11 +7,11 @@ import { toast } from "sonner"
 export default function HabitToggle({ id }: { id: string }) {
 
     const toggleWithId = toggleHabit.bind(null, id)
-    const [state, formActionToggle, isPendingToggle] = useActionState(toggleWithId, null)
+    const [state, formActionToggle, isPendingToggle] = useActionState(toggleWithId, { error: null, attempt: 0 })
 
     useEffect(() => {
-        if (state) toast.error(state)
-    }, [state])
+        if (state.error && state.attempt > 0) toast.error(state.error)
+    }, [state.attempt, state.error])
 
     return (
         <form className="my-2" action={formActionToggle}>

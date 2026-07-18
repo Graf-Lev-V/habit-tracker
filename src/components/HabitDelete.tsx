@@ -1,20 +1,27 @@
 'use client'
 
 import { deleteHabit } from "@/app/dashboard/actions"
-import { startTransition, useActionState, useEffect, useState } from "react"
+import { startTransition, useActionState, useEffect, useRef, useState } from "react"
 import { FaTrash, FaSpinner } from "react-icons/fa"
 import { toast } from "sonner"
 
 export default function HabitDelete({ id }: { id: string }) {
 
     const deleteWithId = deleteHabit.bind(null, id)
-    const [state, formActionDelete, isPendingDelete] = useActionState(deleteWithId, null)
+    const [state, formActionDelete, isPendingDelete] = useActionState(deleteWithId, { error: null, attempt: 0 })
 
     const [confirmDelete, setConfirmDelete] = useState<boolean>(false)
 
+    const prevState = useRef<number>(0)
+
     useEffect(() => {
-        if (state) toast.message(state)
-    }, [state])
+        if (state.error && state.attempt !== prevState.current) 
+            {
+                toast.message(state.error)
+                setConfirmDelete(false)
+                prevState.current = state.attempt
+            }
+    }, [state.attempt, state.error])
 
     return (
         <button 

@@ -45,7 +45,7 @@ export async function toggleHabit(id: string) {
     return error?.message ?? null
 }
 
-export async function deleteHabit(id: string) {
+export async function deleteHabit(id: string, prevState: { error: string | null, attempt: number }) {
     const session = await auth()
     if (!session) throw new Error('Unauthorized')
     const { error } = await supabaseAdmin
@@ -54,5 +54,5 @@ export async function deleteHabit(id: string) {
         .eq('id', id)
         .eq('user_id', session.user!.id)
     revalidatePath('/dashboard')
-    return error?.message ?? null
+    return { error: error?.message ?? null, attempt: prevState.attempt + 1 }
 }

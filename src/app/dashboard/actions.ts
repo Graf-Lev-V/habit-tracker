@@ -42,7 +42,7 @@ export async function toggleHabit(id: string, prevState: { error: string | null,
             completed_date: new Date().toISOString().split('T')[0] 
         })
     revalidatePath('/dashboard')
-    return { error: error?.message ?? null, attempt: prevState.attempt + 1 }
+    return { error: error ? 'Something went wrong. Please try again.' : null, attempt: prevState.attempt + 1 }
 }
 
 export async function deleteHabit(id: string, prevState: { error: string | null, attempt: number }) {
@@ -54,5 +54,5 @@ export async function deleteHabit(id: string, prevState: { error: string | null,
         .eq('id', id)
         .eq('user_id', session.user!.id)
     revalidatePath('/dashboard')
-    return { error: error?.message ?? null, attempt: prevState.attempt + 1 }
+    return { error: error ? 'Something went wrong. Please try again.' : null, attempt: prevState.attempt + 1 }
 }

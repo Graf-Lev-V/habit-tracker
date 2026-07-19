@@ -11,7 +11,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     callbacks: {
         async jwt({ account, token, user }) {
             if (account) {
-                const { data } = await supabaseAdmin
+                const { data, error } = await supabaseAdmin
                     .from('users')
                     .upsert(
                         { github_id: account.providerAccountId, email: user.email, name: user.name }, 
@@ -19,6 +19,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                     )
                     .select('id')
                     .single()
+                if (error) throw new Error(error.message)
                 token.userId = data!.id
             }
             return token

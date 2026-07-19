@@ -13,7 +13,7 @@ export default async function Dashboard() {
   const session = await auth();
   if (!session) throw new Error('Unauthorized')
 
-  const [{ data: habits }, { data: habit_logs }] = await Promise.all([
+  const [{ data: habits, error: habitsError }, { data: habit_logs, error: logsError }] = await Promise.all([
     supabaseAdmin
     .from('habits')
     .select('*')
@@ -25,6 +25,8 @@ export default async function Dashboard() {
     .select('*')
     .eq('user_id', session.user!.id)
   ])
+
+  if (habitsError || logsError) throw new Error(habitsError?.message ?? logsError?.message)
 
   const habitsToday = [...new Set(habit_logs?.filter((log) => log.completed_date === new Date().toISOString().split('T')[0])
     .map((log) => log.habit_id))]

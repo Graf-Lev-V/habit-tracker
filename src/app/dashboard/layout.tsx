@@ -2,9 +2,9 @@ import Header from "@/components/Header";
 
 export default function DashBoardLayout({ children }: { children: React.ReactNode }) {
     return (
-        <>
-        <Header />
-        {children}
-        </>
+        <div className="flex flex-col min-h-screen">
+            <Header />
+            {children}
+        </div>
     )
 }

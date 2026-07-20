@@ -1,7 +1,6 @@
 import { supabaseAdmin } from '@/lib/supabase-admin';
 import { auth } from '../../lib/auth';
 import { calculateStreak } from '@/lib/streak';
-import { calendar } from '@/lib/calendar';
 import { calculateBestStreak } from '@/lib/bestStreak';
 import ThirtyDayCompletion from '@/lib/thirtyDay';
 import AddHabitForm from '@/components/AddHabitForm';
@@ -37,13 +36,12 @@ export default async function Dashboard() {
     const completedDates = logs?.map((log) => log.completed_date)
     const maxStreak = calculateBestStreak(completedDates!)
     bestStreak = bestStreak > maxStreak ? bestStreak : maxStreak
-    const completedCalendar = calendar(completedDates!)
-    return { habit: habit, streak: calculateStreak(completedDates!), thirtyDay: ThirtyDayCompletion(completedDates!), calendar: completedCalendar }
+    return { habit: habit, streak: calculateStreak(completedDates!), thirtyDay: ThirtyDayCompletion(completedDates!), calendar: completedDates }
   })
 
   return (
     <main className='p-4 flex flex-col items-center gap-4'>
-      <div className='grid grid-cols-3 gap-5'>
+      <div className='grid grid-cols-1 sm:grid-cols-3 gap-5'>
         <div className='px-8 py-6 rounded flex flex-col gap-2 text-center bg-neutral-700 shadow-lg'>
           <p className='text-white/80'>Habits</p>
           <p className='text-4xl'>{habits?.length}</p>

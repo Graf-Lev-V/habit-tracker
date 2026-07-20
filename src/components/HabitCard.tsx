@@ -1,6 +1,7 @@
 import type { Habit } from '@/types/index'
 import HabitToggle from './HabitToggle'
 import HabitDelete from './HabitDelete'
+import Calendar from './Caledar'
 
 export default function HabitCard({ habit }: Habit) {
     return (
@@ -12,21 +13,7 @@ export default function HabitCard({ habit }: Habit) {
             <p className='text-white/60 text-sm'>Streak: {habit.streak}</p>
             <p className='text-white/60 text-sm'>Thirty-day complection: {habit.thirtyDay}%</p>
             <HabitToggle id={habit.habit.id} />
-            <div 
-            className='border-t border-white/10 pt-3 mt-1'
-            style={{
-                display: 'grid', 
-                gridTemplateRows: 'repeat(7, min-content)', 
-                gridTemplateColumns: 'repeat(53, min-content)', 
-                gap: '4px',
-                gridAutoFlow: 'column'
-            }}>
-            {habit.calendar.map((date) => 
-                date.completed ? 
-                <div key={date.date} className='w-4 h-4 bg-green-600 rounded-xs'></div> :
-                <div key={date.date} className='w-4 h-4 bg-gray-700 rounded-xs'></div>
-            )}
-            </div>
+            <Calendar calendar={habit.calendar}/>
         </div>
     )
 }

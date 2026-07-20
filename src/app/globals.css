@@ -34,3 +34,25 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #525252;
 }
+
+.calendar {
+  display: grid;
+  grid-template-rows: repeat(7, min-content);
+  grid-template-columns: repeat(53, min-content);
+  gap: 4px;
+  grid-auto-flow: column;
+}
+
+@media (max-width: 639px) {
+  .calendar {
+    display: grid;
+    grid-template-rows: repeat(13, min-content) !important;
+    grid-template-columns: repeat(7, min-content);
+    gap: 2px;
+    grid-auto-flow: row;
+    margin: 0 auto;
+  }
+  .calendar > div:nth-child(-n+276) {
+    display: none;
+  }
+}

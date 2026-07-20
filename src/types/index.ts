@@ -8,9 +8,6 @@ export type Habit = {
         }, 
         streak: number, 
         thirtyDay: number, 
-        calendar: {
-            date: string, 
-            completed: boolean
-        }[]
+        calendar: string[]
     }
 }

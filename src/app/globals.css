@@ -46,7 +46,7 @@ body {
 @media (max-width: 639px) {
   .calendar {
     display: grid;
-    grid-template-rows: repeat(13, min-content) !important;
+    grid-template-rows: repeat(13, min-content);
     grid-template-columns: repeat(7, min-content);
     gap: 2px;
     grid-auto-flow: row;

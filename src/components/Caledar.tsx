@@ -1,40 +1,17 @@
 'use client'
 
-import { useLayoutEffect, useState, useTransition } from "react"
 
-function generateCalendarResult(calendar: string[], days: number) {
+export default function Calendar({ calendar }: { calendar: string[] }) {
+
     const dates = []
     const date = new Date()
 
-    for (let d = 0; d <= days; d++) {
+    for (let d = 0; d <= 365; d++) {
         dates.push(date.toISOString().split('T')[0])
         date.setDate(date.getDate() - 1);
     }
 
-    return dates.map((date) => calendar.includes(date) ? {date: date, completed: true} : {date: date, completed: false}).reverse()
-}
-
-export default function Calendar({ calendar }: { calendar: string[] }) {
-
-    const [, startTransition] = useTransition()
-
-    const [days, setDays] = useState(90)
-
-    const [result, setResult] = useState<{date: string, completed: boolean}[]>(() => generateCalendarResult(calendar, days))
-
-    useLayoutEffect(() => {
-        
-        startTransition(() => {
-
-        if (typeof window !== 'undefined' && window.innerWidth > 639) setDays(365)
-
-        const newResult = generateCalendarResult(calendar, days)
-        
-        if (JSON.stringify(newResult) !== JSON.stringify(result)) setResult(newResult)
-
-        })
-        
-    }, [calendar, days, result])
+    const result = dates.map((date) => calendar.includes(date) ? {date: date, completed: true} : {date: date, completed: false}).reverse()
 
     return (
         <div className='calendar border-t border-white/10 pt-3 mt-1'>

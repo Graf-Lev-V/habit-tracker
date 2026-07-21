@@ -5,7 +5,7 @@ import Calendar from './Caledar'
 
 export default function HabitCard({ habit }: Habit) {
     return (
-        <div className='rounded p-4 bg-neutral-800 hover:brightness-110 flex flex-col shadow-lg'>
+        <div className='rounded p-4 bg-neutral-800 hover:brightness-110 flex flex-col shadow-lg w-full sm:w-max'>
             <div className='flex justify-between'>
                 <p className='text-white text-xl'>{habit.habit.name}</p>
                 <HabitDelete id={habit.habit.id} />

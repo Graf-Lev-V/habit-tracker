@@ -1,6 +1,3 @@
-'use client'
-
-
 export default function Calendar({ calendar }: { calendar: string[] }) {
 
     const dates = []

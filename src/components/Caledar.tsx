@@ -1,17 +1,13 @@
 'use client'
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 export default function Calendar({ calendar }: { calendar: string[] }) {
 
     const dates = []
-    const date = new Date()
+    const [date, setDate] = useState(() => new Date())
 
-    const [days, setDays] = useState<number>(0)
-
-    useEffect(() => {
-        setDays(window.innerWidth > 639 ? 365 : 90)
-    }, [])
+    const [days, setDays] = useState(() => typeof window !== 'undefined' ? window.innerWidth > 639 ? 365 : 90 : 90)
 
     for (let d = 0; d <= days; d++) {
         dates.push(date.toISOString().split('T')[0])

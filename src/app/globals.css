@@ -42,4 +42,5 @@ body {
   gap: 4px;
   grid-auto-flow: column;
   overflow: hidden;
+  justify-content: end;
 }

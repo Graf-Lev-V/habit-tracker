@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react"
+import { useLayoutEffect, useState, useTransition } from "react"
 
 function generateCalendarResult(calendar: string[], days: number) {
     const dates = []
@@ -16,15 +16,23 @@ function generateCalendarResult(calendar: string[], days: number) {
 
 export default function Calendar({ calendar }: { calendar: string[] }) {
 
-    const [days, setDays] = useState(() => typeof window !== 'undefined' ? window.innerWidth > 639 ? 365 : 90 : 90)
+    const [, startTransition] = useTransition()
+
+    const [days, setDays] = useState(90)
 
     const [result, setResult] = useState<{date: string, completed: boolean}[]>(() => generateCalendarResult(calendar, days))
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        
+        startTransition(() => {
+
+        if (typeof window !== 'undefined' && window.innerWidth > 639) setDays(365)
 
         const newResult = generateCalendarResult(calendar, days)
         
         if (JSON.stringify(newResult) !== JSON.stringify(result)) setResult(newResult)
+
+        })
         
     }, [calendar, days, result])
 

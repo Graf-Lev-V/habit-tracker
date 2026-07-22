@@ -10,6 +10,19 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
 
     const result = dates.map((date) => calendar.includes(date) ? {date: date, completed: true} : {date: date, completed: false}).reverse()
 
+    const monthLabel = []
+    let lastMonth = -1
+
+    result.forEach((day, index) => {
+        const month = new Date(day.date).getMonth()
+        if (month !== lastMonth && index % 7 === 0) {
+            monthLabel.push({ month, column: Math.floor(index / 7) })
+            lastMonth = month
+        }
+    })
+
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
     return (
         <div className='calendar border-t border-white/10 pt-3 mt-1 grid grid-rows-7 gap-1 justify-center grid-flow-col'>
             {result.map((date) =>

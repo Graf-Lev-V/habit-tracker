@@ -26,7 +26,7 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
     result.forEach((day, index) => {
         const month = new Date(day.date).getMonth()
         const column = Math.floor(index / 7)
-        if (month !== lastMonth && index % 7 === 0 && column !== 0) {
+        if (month !== lastMonth && index % 7 === 0) {
             monthLabel.push({ month, column })
             lastMonth = month
         }

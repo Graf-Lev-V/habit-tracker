@@ -19,7 +19,7 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
     const totalWeeks = Math.ceil(result.length / 7)
 
     const monthLabel: { month: number, column: number }[] = []
-    
+
     let lastMonth = -1
 
     for (let column = 0; column < totalWeeks; column++) {

@@ -3,21 +3,18 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
     const dates = []
     const date = new Date()
 
-    const daysBack = 363
+    const daysBack = 365
     const oldestDate = new Date()
     oldestDate.setDate(oldestDate.getDate() - daysBack)
 
-    for (let d = 0; d <= daysBack; d++) {
+    const daysBefore = new Date(oldestDate.getDate()).getDay()
+
+    for (let d = 0; d <= daysBack + daysBefore; d++) {
         dates.push(date.toISOString().split('T')[0])
         date.setDate(date.getDate() - 1);
     }
 
     const result = dates.map((date) => calendar.includes(date) ? {date: date, completed: true} : {date: date, completed: false}).reverse()
-
-    const daysBefore = new Date(result[0].date).getDay()
-    for (let i = 0; i < daysBefore; i++) {
-        result.unshift({ date: '', completed: false })
-    }
 
     const totalWeeks = Math.ceil(result.length / 7)
 

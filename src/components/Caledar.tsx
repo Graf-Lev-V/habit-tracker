@@ -7,14 +7,14 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
     const oldestDate = new Date()
     oldestDate.setDate(oldestDate.getDate() - daysBack)
 
-    const daysBefore = new Date(oldestDate.getDate()).getDay()
+    const daysBefore = oldestDate.getDay()
 
-    for (let d = 0; d <= daysBack + daysBefore; d++) {
+    for (let i = 0; i <= daysBack + daysBefore; i++) {
         dates.push(date.toISOString().split('T')[0])
         date.setDate(date.getDate() - 1);
     }
 
-    const result = dates.map((date) => calendar.includes(date) ? {date: date, completed: true} : {date: date, completed: false}).reverse()
+    const result = dates.map((d) => ({date: d, completed: calendar.includes(d)})).reverse()
 
     const totalWeeks = Math.ceil(result.length / 7)
 
@@ -24,9 +24,7 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
 
     for (let column = 0; column < totalWeeks; column++) {
         const week = result.slice(column * 7, column * 7 + 7)
-        const day = week.find(d => d.date)
-
-        if (!day?.date) continue
+        const day = week[0]
 
         const month = new Date(day.date).getMonth()
 
@@ -55,16 +53,7 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
             </div>
             <div className='calendar border-t border-white/10 pt-3 mt-1 grid grid-rows-7 gap-1 justify-center grid-flow-col' style={{gridTemplateColumns: `repeat(${totalWeeks}, 1fr)`}}>
                 {result.map((day, index) => (
-                    <div
-                        key={index}
-                        className={`w-4 h-4 rounded-xs ${
-                            !day.date
-                                ? 'bg-gray-700'
-                                : day.completed
-                                    ? 'bg-green-600'
-                                    : 'bg-gray-700'
-                        }`}
-                    />
+                    <div key={index} className={`w-4 h-4 rounded-xs ${day.completed ? 'bg-green-600' : 'bg-gray-700'}`} />
                 ))}
             </div>
         </div>

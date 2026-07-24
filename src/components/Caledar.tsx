@@ -7,9 +7,7 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
     const oldestDate = new Date()
     oldestDate.setDate(oldestDate.getDate() - daysBack)
 
-    const totalDays = daysBack
-
-    for (let d = 0; d <= totalDays; d++) {
+    for (let d = 0; d <= daysBack; d++) {
         dates.push(date.toISOString().split('T')[0])
         date.setDate(date.getDate() - 1);
     }
@@ -43,10 +41,18 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
 
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
+    const minGap = 2
+
+    const visibleLabels = monthLabel.filter((label, i) => {
+        const next = monthLabel[i + 1]
+        const width = next ? next.column - label.column : totalWeeks - label.column
+        return width >= minGap
+    })
+
     return (
         <div>
             <div className="grid grid-rows-1 gap-1" style={{gridTemplateColumns: `repeat(${totalWeeks}, 1fr)`}}>
-                {monthLabel.map((ml) => 
+                {visibleLabels.map((ml) => 
                     <div key={ml.column} className="w-4" style={{gridColumnStart: ml.column + 1}}>{monthNames[ml.month]}</div>
                 )}
             </div>
@@ -56,7 +62,7 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
                         key={index}
                         className={`w-4 h-4 rounded-xs ${
                             !day.date
-                                ? 'bg-transparent'
+                                ? 'bg-gray-700'
                                 : day.completed
                                     ? 'bg-green-600'
                                     : 'bg-gray-700'

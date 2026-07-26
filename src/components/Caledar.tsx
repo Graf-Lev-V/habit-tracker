@@ -44,12 +44,12 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
 
     return (
         <div>
-            <div className="grid grid-rows-1 gap-1" style={{gridTemplateColumns: `repeat(${totalWeeks}, 1fr)`}}>
+            <div className="grid grid-rows-1 gap-1 border-t border-white/10 pt-3 mt-1" style={{gridTemplateColumns: `repeat(${totalWeeks}, 1fr)`}}>
                 {visibleLabels.map((ml) => 
                     <div key={ml.column} className="w-4 text-white/70 text-sm" style={{gridColumnStart: ml.column + 1}}>{monthNames[ml.month]}</div>
                 )}
             </div>
-            <div className='calendar border-t border-white/10 pt-3 mt-1 grid grid-rows-7 gap-1 justify-center grid-flow-col' style={{gridTemplateColumns: `repeat(${totalWeeks}, 1fr)`}}>
+            <div className='calendar grid grid-rows-7 gap-1 justify-center grid-flow-col' style={{gridTemplateColumns: `repeat(${totalWeeks}, 1fr)`}}>
                 {result.map((day, index) => (
                     <div key={index} className={`w-4 h-4 rounded-xs ${day.completed ? 'bg-green-600' : 'bg-gray-700'}`} />
                 ))}

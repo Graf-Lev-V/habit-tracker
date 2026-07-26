@@ -23,9 +23,7 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
     let lastMonth = -1
 
     for (let column = 0; column < totalWeeks; column++) {
-        const week = result.slice(column * 7, column * 7 + 7)
-        const day = week[0]
-
+        const day = result[column * 7]
         const month = new Date(day.date).getMonth()
 
         if (month !== lastMonth) {
@@ -34,8 +32,6 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
         }
     }
 
-    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
     const minGap = 2
 
     const visibleLabels = monthLabel.filter((label, i) => {
@@ -43,6 +39,8 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
         const width = next ? next.column - label.column : totalWeeks - label.column
         return width >= minGap
     })
+
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
     return (
         <div>

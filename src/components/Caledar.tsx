@@ -43,8 +43,8 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
     return (
-        <div>
-            <div className="grid grid-rows-1 gap-1 border-t border-white/10 pt-3 mt-1" style={{gridTemplateColumns: `repeat(${totalWeeks}, 1fr)`}}>
+        <div className="border-t border-white/10 pt-3 mt-1">
+            <div className="grid grid-rows-1 gap-1" style={{gridTemplateColumns: `repeat(${totalWeeks}, 1fr)`}}>
                 {visibleLabels.map((ml) => 
                     <div key={ml.column} className="w-4 text-white/70 text-sm" style={{gridColumnStart: ml.column + 1}}>{monthNames[ml.month]}</div>
                 )}

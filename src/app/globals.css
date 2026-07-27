@@ -35,8 +35,3 @@ body {
   background-color: #525252;
 }
 
-@media (max-width: 639px) {
-  .calendar > div:nth-child(-n+287) {
-    display: none;
-  }
-}

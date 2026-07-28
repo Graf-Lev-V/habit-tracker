@@ -1,39 +1,41 @@
 export default function Loading() {
     return (
         <main className='p-4 flex flex-col items-center gap-4'>
-            <div className='grid grid-cols-3 gap-5'>
-                <div className='px-8 py-6 rounded flex flex-col gap-3 text-center bg-neutral-700 shadow-lg animate-pulse items-center'>
-                    <div className="h-[20px] w-[121px] bg-neutral-600 rounded animate-pulse"></div>
-                    <div className="h-[40px] w-12 bg-neutral-600 rounded animate-pulse"></div>
+            <div className='grid grid-cols-1 sm:grid-cols-3 gap-5'>
+                <div className='h-[96px] sm:h-[120px] px-8 py-3 sm:py-6 rounded flex flex-col gap-3 text-center bg-neutral-700 shadow-lg animate-pulse items-center'>
+                    <div className="h-[20px] mb-[2px] w-14 bg-neutral-600 rounded animate-pulse"></div>
+                    <div className="h-[34px] w-8 bg-neutral-600 rounded animate-pulse"></div>
                 </div>
-                <div className='px-8 py-6 rounded flex flex-col gap-3 text-center bg-neutral-700 shadow-lg animate-pulse items-center'>
-                    <div className="h-[20px] w-[121px] bg-neutral-600 rounded animate-pulse"></div>
-                    <div className="h-[40px] w-12 bg-neutral-600 rounded animate-pulse"></div>
+                <div className='h-[96px] sm:h-[120px] px-8 py-3 sm:py-6 rounded flex flex-col gap-3 text-center bg-neutral-700 shadow-lg animate-pulse items-center'>
+                    <div className="h-[20px] mb-[2px] w-[121px] bg-neutral-600 rounded animate-pulse"></div>
+                    <div className="h-[34px] w-8 bg-neutral-600 rounded animate-pulse"></div>
                 </div>
-                <div className='px-8 py-6 rounded flex flex-col gap-3 text-center bg-neutral-700 shadow-lg animate-pulse items-center'>
-                    <div className="h-[20px] w-[121px] bg-neutral-600 rounded animate-pulse"></div>
-                    <div className="h-[40px] w-12 bg-neutral-600 rounded animate-pulse"></div>
+                <div className='h-[96px] sm:h-[120px] px-8 py-3 sm:py-6 rounded flex flex-col gap-3 text-center bg-neutral-700 shadow-lg animate-pulse items-center'>
+                    <div className="h-[20px] mb-[2px] w-[80px] bg-neutral-600 rounded animate-pulse"></div>
+                    <div className="h-[34px] w-8 bg-neutral-600 rounded animate-pulse"></div>
                 </div>
             </div>
-            <div className='rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse gap-2'>
-                <div className="h-5 w-32 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="h-5 w-17 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="h-5 w-47 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="flex gap-2">
-                    <div className="h-10 w-18 bg-neutral-700 rounded animate-pulse"></div>
-                    <div className="h-10 w-18 bg-neutral-700 rounded animate-pulse"></div>
+            <div className='h-[311px] sm:h-[333px] w-full sm:w-max rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
+                <div className="flex justify-between">
+                    <div className="h-[20px] w-[100px] mt-1 mb-3 bg-neutral-700 rounded animate-pulse"></div>
+                    <div className="px-4 pt-4 pb-3 mb-1 rounded bg-neutral-700"></div>
                 </div>
-                <div className="h-[108px] w-[844px] bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-[12px] w-[175px] mb-1 bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-[40px] w-[70px] my-2 mb-[41px] bg-neutral-700 rounded animate-pulse"></div>
+                <div className="hidden sm:block h-[136px] w-[1056px] mt-1 bg-neutral-700 rounded animate-pulse"></div>
+                <div className="block sm:hidden h-[114px] w-[236px] mt-1 bg-neutral-700 rounded animate-pulse"></div>
             </div>
-            <div className='rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse gap-2'>
-                <div className="h-5 w-32 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="h-5 w-17 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="h-5 w-47 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="flex gap-2">
-                    <div className="h-10 w-18 bg-neutral-700 rounded animate-pulse"></div>
-                    <div className="h-10 w-18 bg-neutral-700 rounded animate-pulse"></div>
+            <div className='h-[311px] sm:h-[333px] w-full sm:w-max rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
+                <div className="flex justify-between">
+                    <div className="h-[20px] w-[100px] mt-1 mb-3 bg-neutral-700 rounded animate-pulse"></div>
+                    <div className="px-4 pt-4 pb-3 mb-1 rounded bg-neutral-700"></div>
                 </div>
-                <div className="h-[108px] w-[844px] bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-[12px] w-[175px] mb-1 bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-[40px] w-[70px] my-2 mb-[41px] bg-neutral-700 rounded animate-pulse"></div>
+                <div className="hidden sm:block h-[136px] w-[1056px] mt-1 bg-neutral-700 rounded animate-pulse"></div>
+                <div className="block sm:hidden h-[114px] w-[236px] mt-1 bg-neutral-700 rounded animate-pulse"></div>
             </div>
         </main>
     )

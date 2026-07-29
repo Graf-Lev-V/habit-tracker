@@ -3,7 +3,7 @@ import HabitToggle from './HabitToggle'
 import HabitDelete from './HabitDelete'
 import Calendar from './Caledar'
 
-export default function HabitCard({ habit }: Habit) {
+export default function HabitCard({ habit }: { habit: Habit }) {
     return (
         <div className='rounded p-4 bg-neutral-800 hover:brightness-110 flex flex-col shadow-lg w-full sm:w-max'>
             <div className='flex justify-between'>

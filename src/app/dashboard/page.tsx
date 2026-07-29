@@ -5,6 +5,7 @@ import { calculateBestStreak } from '@/lib/bestStreak';
 import ThirtyDayCompletion from '@/lib/thirtyDay';
 import AddHabitForm from '@/components/AddHabitForm';
 import HabitCard from '@/components/HabitCard';
+import HabitList from '@/components/HabitList';
 
 export const dynamic = 'force-dynamic'
 
@@ -55,9 +56,7 @@ export default async function Dashboard() {
           <p className='text-4xl text-green-500'>{bestStreak}</p>
         </div>
       </div>
-      {habitStreak?.map((habit) => 
-          <HabitCard key={habit.habit.id} habit={habit}/>
-      )}
+      <HabitList habitStreak={habitStreak}/>
       {(!habitStreak || habitStreak.length === 0) && <p className='rounded p-4 bg-neutral-800 text-white/80'>No habits yet. Add your first one to start tracking your progress.</p>}
       <AddHabitForm />
     </main>

@@ -13,7 +13,7 @@ export default function HabitList({ habitStreak }: { habitStreak: Habit[] }) {
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
                 exit={{opacity: 0, scale: 0.95}}
-                transition={{duration: 1}}
+                transition={{duration: 0.4}}
             >
                 <p className='rounded p-4 bg-neutral-800 text-white/80'>No habits yet. Add your first one to start tracking your progress.</p>
             </motion.div>
@@ -29,7 +29,7 @@ export default function HabitList({ habitStreak }: { habitStreak: Habit[] }) {
                         initial={{opacity: 0}}
                         animate={{opacity: 1}}
                         exit={{opacity: 0, scale: 0.95}}
-                        transition={{duration: 1}}
+                        transition={{duration: 0.4}}
                     >
                         <HabitCard habit={habit} />
                     </motion.div>

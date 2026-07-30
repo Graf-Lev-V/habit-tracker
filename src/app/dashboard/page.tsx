@@ -57,7 +57,6 @@ export default async function Dashboard() {
         </div>
       </div>
       <HabitList habitStreak={habitStreak}/>
-      {(!habitStreak || habitStreak.length === 0) && <p className='rounded p-4 bg-neutral-800 text-white/80'>No habits yet. Add your first one to start tracking your progress.</p>}
       <AddHabitForm />
     </main>
   )

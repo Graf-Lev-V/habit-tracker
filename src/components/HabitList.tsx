@@ -36,7 +36,6 @@ export default function HabitList({ habitStreak }: { habitStreak: Habit[] }) {
                 </AnimatePresence>
                 <AnimatePresence onExitComplete={() => {
                     if (habitStreak.length > 0) setShowCards(true)
-
                 }}>
                     {showEmpty &&
                     <motion.div

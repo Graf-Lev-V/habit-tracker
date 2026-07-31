@@ -7,7 +7,7 @@ export default function AddHabitForm() {
     
     const [formState, setFormState] = useState<boolean>(false)
     const [state, formAction, isPending] = useActionState(handleCreate, { error: null, success: 0 })
-    const prevState = useRef<number>(0)
+    const [prevSuccess, setPrevSuccess] = useState<number>(0)
     const errorRef = useRef<HTMLParagraphElement>(null)
     const formRef = useRef<HTMLFormElement>(null)
     
@@ -15,8 +15,13 @@ export default function AddHabitForm() {
         if (state.error) errorRef.current?.scrollIntoView({ behavior: 'smooth' })
     }, [state.error])
 
+    if (prevSuccess !== state.success) {
+        setPrevSuccess(state.success)
+        if (formState) setFormState(false)
+    }
+
     useEffect(() => {
-        if (prevState.current !== state.success) { setFormState(false); prevState.current = state.success }
+        
         if (formState) formRef.current?.scrollIntoView({ behavior: 'smooth' })
     }, [state.success, formState])
 

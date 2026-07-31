@@ -4,7 +4,6 @@ import { calculateStreak } from '@/lib/streak';
 import { calculateBestStreak } from '@/lib/bestStreak';
 import ThirtyDayCompletion from '@/lib/thirtyDay';
 import AddHabitForm from '@/components/AddHabitForm';
-import HabitCard from '@/components/HabitCard';
 import HabitList from '@/components/HabitList';
 
 export const dynamic = 'force-dynamic'

@@ -13,7 +13,7 @@ export default function HabitCard({ habit }: { habit: Habit }) {
             <p className='text-white/60 text-sm'>Streak: <span className='text-green-500 font-semibold'>{habit.streak}</span></p>
             <p className='text-white/60 text-sm'>Thirty-day complection: {habit.thirtyDay}%</p>
             <HabitToggle id={habit.habit.id} completedToday={habit.completedToday} />
-            <Calendar calendar={habit.calendar}/>
+            {/* <Calendar calendar={habit.calendar}/> */}
         </div>
     )
 }

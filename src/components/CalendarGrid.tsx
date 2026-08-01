@@ -8,7 +8,7 @@ export default function CalendarGrid({ result, totalWeeks, visibleLabels, monthN
             </div>
             <div className='grid grid-rows-7 gap-1 justify-center grid-flow-col' style={{gridTemplateColumns: `repeat(${totalWeeks}, minmax(0, 1fr))`}}>
                 {result.map((day, index) => (
-                    <div key={index} className={`rounded-xs ${day.completed ? 'bg-green-600' : 'bg-gray-700'}`} style={{width: 'minmax(0, 1fr)', height: 'minmax(0, 1fr)'}} />
+                    <div key={index} className={`rounded-xs ${day.completed ? 'bg-green-600' : 'bg-gray-700'} aspect-square`} />
                 ))}
             </div>
         </>

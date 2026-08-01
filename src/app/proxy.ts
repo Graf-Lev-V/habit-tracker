@@ -1,13 +1,13 @@
 import { auth } from '../lib/auth'
-import { NextResponse, NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function proxy(req: NextRequest) {
-    const session = await auth()
-    if (!session) {
-        return NextResponse.redirect(new URL('/login', req.url))
+export default auth((req) => {
+    if (!req.auth) {
+        const loginUrl = new URL('/login', req.url)
+        return NextResponse.redirect(loginUrl)
     }
     return NextResponse.next()
-}
+})
 
 export const config = {
     matcher: ['/dashboard']

@@ -5,24 +5,25 @@ import { calculateBestStreak } from '@/lib/bestStreak';
 import ThirtyDayCompletion from '@/lib/thirtyDay';
 import AddHabitForm from '@/components/AddHabitForm';
 import HabitList from '@/components/HabitList';
+import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic'
 
 export default async function Dashboard() {
   const session = await auth();
-  if (!session) throw new Error('Unauthorized')
+  if (!session) redirect('/login')
 
   const [{ data: habits, error: habitsError }, { data: habit_logs, error: logsError }] = await Promise.all([
     supabaseAdmin
     .from('habits')
     .select('*')
-    .eq('user_id', session.user!.id)
+    .eq('user_id', session?.user!.id)
     .order('created_at', { ascending: true }),
     
     supabaseAdmin
     .from('habit_logs')
     .select('*')
-    .eq('user_id', session.user!.id)
+    .eq('user_id', session?.user!.id)
   ])
 
   if (habitsError || logsError) throw new Error(habitsError?.message ?? logsError?.message)

@@ -19,7 +19,6 @@ body {
 }
 
 * {
-  outline: 1px solid red;
   scrollbar-width: thin;
   scrollbar-color: #525252 #202020;
 }

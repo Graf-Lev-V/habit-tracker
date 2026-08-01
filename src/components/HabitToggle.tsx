@@ -15,7 +15,7 @@ export default function HabitToggle({ id, completedToday }: { id: string, comple
 
     return (
         <form className="my-2" action={formActionToggle}>
-            <button className={`${completedToday ? 'bg-neutral-700' : 'bg-green-700'} hover:brightness-80 disabled:hover:brightness-100 transition-colors w-min py-2 px-4 rounded cursor-pointer disabled:cursor-default`} type='submit' disabled={isPendingToggle}>
+            <button className={`${completedToday ? 'bg-neutral-700 hover:brightness-125' : 'bg-green-700 hover:brightness-80'} disabled:hover:brightness-100 transition-colors w-min py-2 px-4 rounded cursor-pointer disabled:cursor-default`} type='submit' disabled={isPendingToggle}>
                 {isPendingToggle ? 'Saving...' : completedToday ? 'Undo' : 'Done'}
             </button>
         </form>

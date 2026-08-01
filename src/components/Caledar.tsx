@@ -9,7 +9,7 @@ export default function Calendar({ calendar }: { calendar: string[] }) {
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
     return (
-        <div className="border-t border-white/10 pt-3 mt-1 min-w-0">
+        <div className="border-t border-white/10 pt-3 mt-1">
             <div className="hidden sm:block">
                 <CalendarGrid {...desktop} monthNames={monthNames} />
             </div>

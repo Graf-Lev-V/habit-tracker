@@ -15,7 +15,7 @@ export default function HabitList({ habitStreak }: { habitStreak: Habit[] }) {
     }
 
     return (
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 w-full max-w-full min-w-0">
                 <AnimatePresence onExitComplete={() => {
                     if (habitStreak.length === 0) {
                         setShowEmpty(true)

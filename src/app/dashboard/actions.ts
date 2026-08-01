@@ -34,13 +34,36 @@ export async function createHabit(name: string) {
 export async function toggleHabit(id: string, prevState: { error: string | null, attempt: number }) {
     const session = await auth()
     if (!session) throw new Error('Unauthorized')
-    const { error } = await supabaseAdmin
+
+    const today = new Date().toISOString().split('T')[0]
+
+    const { data: existing } = await supabaseAdmin
+        .from('habit_logs')
+        .select('id')
+        .eq('habit_id', id)
+        .eq('completed_date', today)
+        .maybeSingle()
+
+    let error;
+    if (existing) {
+    const { error: err } = await supabaseAdmin
+        .from('habit_logs')
+        .delete()
+        .eq('habit_id', id)
+        .eq('completed_date', today)
+        .eq('user_id', session.user!.id)
+    error = err
+    }
+    else {
+    const { error: err } = await supabaseAdmin
         .from('habit_logs')
         .insert({ 
             habit_id: id, 
             user_id: session.user!.id, 
             completed_date: new Date().toISOString().split('T')[0] 
         })
+        error = err
+    }
     revalidatePath('/dashboard')
     return { error: error ? 'Something went wrong. Please try again.' : null, attempt: prevState.attempt + 1 }
 }

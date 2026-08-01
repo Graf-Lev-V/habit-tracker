@@ -34,9 +34,10 @@ export default async function Dashboard() {
   const habitStreak = habits?.map((habit) => {
     const logs = habit_logs?.filter((log) => log.habit_id === habit.id)
     const completedDates = logs?.map((log) => log.completed_date)
+    const completedToday = completedDates?.includes(new Date().toISOString().split('T')[0]) ?? false
     const maxStreak = calculateBestStreak(completedDates!)
     bestStreak = bestStreak > maxStreak ? bestStreak : maxStreak
-    return { habit: habit, streak: calculateStreak(completedDates!), thirtyDay: ThirtyDayCompletion(completedDates!), calendar: completedDates }
+    return { habit: habit, streak: calculateStreak(completedDates!), thirtyDay: ThirtyDayCompletion(completedDates!), calendar: completedDates, completedToday: completedToday }
   })
 
   return (

@@ -14,13 +14,10 @@ export function buildCalendar(daysBack: number, calendar: string[]) {
     }
 
     const result = dates.map((d) => ({date: d, completed: calendar.includes(d)})).reverse()
-
     const totalWeeks = Math.ceil(result.length / 7)
-
     const monthLabel: { month: number, column: number }[] = []
 
     let lastMonth = -1
-
     for (let column = 0; column < totalWeeks; column++) {
         const day = result[column * 7]
         if (!day) continue
@@ -33,7 +30,6 @@ export function buildCalendar(daysBack: number, calendar: string[]) {
     }
 
     const minGap = 2
-
     const visibleLabels = monthLabel.filter((label, i) => {
         const next = monthLabel[i + 1]
         const width = next ? next.column - label.column : totalWeeks - label.column

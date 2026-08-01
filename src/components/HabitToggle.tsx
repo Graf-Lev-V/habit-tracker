@@ -4,7 +4,7 @@ import { toggleHabit } from "@/app/dashboard/actions"
 import { useActionState, useEffect } from "react"
 import { toast } from "sonner"
 
-export default function HabitToggle({ id }: { id: string }) {
+export default function HabitToggle({ id, completedToday }: { id: string, completedToday: boolean }) {
 
     const toggleWithId = toggleHabit.bind(null, id)
     const [state, formActionToggle, isPendingToggle] = useActionState(toggleWithId, { error: null, attempt: 0 })
@@ -15,8 +15,8 @@ export default function HabitToggle({ id }: { id: string }) {
 
     return (
         <form className="my-2" action={formActionToggle}>
-            <button className='bg-green-700 hover:brightness-80 disabled:hover:brightness-100 transition-colors w-min py-2 px-4 rounded cursor-pointer disabled:cursor-default' type='submit' disabled={isPendingToggle}>
-                {isPendingToggle ? 'Saving...' : 'Done'}
+            <button className={`${completedToday ? 'bg-neutral-700' : 'bg-green-700'} hover:brightness-80 disabled:hover:brightness-100 transition-colors w-min py-2 px-4 rounded cursor-pointer disabled:cursor-default`} type='submit' disabled={isPendingToggle}>
+                {isPendingToggle ? 'Saving...' : completedToday ? 'Undo' : 'Done'}
             </button>
         </form>
     )

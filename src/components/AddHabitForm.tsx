@@ -10,7 +10,8 @@ export default function AddHabitForm() {
     const [prevSuccess, setPrevSuccess] = useState<number>(0)
     const errorRef = useRef<HTMLParagraphElement>(null)
     const formRef = useRef<HTMLFormElement>(null)
-    
+    const containerRef = useRef<HTMLDivElement>(null)
+
     useEffect(() => {
         if (state.error) errorRef.current?.scrollIntoView({ behavior: 'smooth' })
     }, [state.error])
@@ -21,12 +22,14 @@ export default function AddHabitForm() {
     }
 
     useEffect(() => {
-        
         if (formState) formRef.current?.scrollIntoView({ behavior: 'smooth' })
-    }, [state.success, formState])
+    }, [formState])
+    useEffect(() => {
+        if (state.success) containerRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }, [state.success])
 
     return (
-        <div className="flex flex-col gap-4 items-center">
+        <div className="flex flex-col gap-4 items-center" ref={containerRef}>
             <button className="w-12 h-12 border border-white/25 bg-neutral-800 hover:brightness-80 cursor-pointer transition-colors rounded text-xl shadow-lg" onClick={() => setFormState(!formState)}>{formState ? '-' : '+'}</button>
             {formState &&
             <form className='flex flex-col sm:flex-row gap-4 sm:gap-5 relative ' action={formAction} ref={formRef}>

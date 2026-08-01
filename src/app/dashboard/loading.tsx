@@ -15,7 +15,7 @@ export default function Loading() {
                     <div className="h-[34px] w-8 bg-neutral-600 rounded animate-pulse"></div>
                 </div>
             </div>
-            <div className='h-[311px] sm:h-[333px] w-full max-w-3xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
+            <div className='h-[311px] sm:h-[333px] w-full max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
                 <div className="flex justify-between">
                     <div className="h-[20px] w-[100px] mt-1 mb-3 bg-neutral-700 rounded animate-pulse"></div>
                     <div className="px-4 pt-4 pb-3 mb-1 rounded bg-neutral-700"></div>
@@ -26,7 +26,7 @@ export default function Loading() {
                 <div className="hidden sm:block h-[136px] w-[1056px] mt-1 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="block sm:hidden h-[114px] w-[236px] mt-1 bg-neutral-700 rounded animate-pulse"></div>
             </div>
-            <div className='h-[311px] sm:h-[333px] w-full max-w-3xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
+            <div className='h-[311px] sm:h-[333px] w-full max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
                 <div className="flex justify-between">
                     <div className="h-[20px] w-[100px] mt-1 mb-3 bg-neutral-700 rounded animate-pulse"></div>
                     <div className="px-4 pt-4 pb-3 mb-1 rounded bg-neutral-700"></div>

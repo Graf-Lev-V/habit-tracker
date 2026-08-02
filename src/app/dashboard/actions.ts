@@ -83,6 +83,7 @@ export async function deleteHabit(id: string, prevState: { error: string | null,
 export async function updateHabitName(id: string, newName: string) {
     const session = await auth()
     if (!session) throw new Error('Unauthorized')
+    if (newName.trim().length > 50) return { error: 'Habit name must be no more than 50 characters' }
     const { error } = await supabaseAdmin
         .from('habits')
         .update({ name: newName })

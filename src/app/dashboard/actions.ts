@@ -79,3 +79,15 @@ export async function deleteHabit(id: string, prevState: { error: string | null,
     revalidatePath('/dashboard')
     return { error: error ? 'Something went wrong. Please try again.' : null, attempt: prevState.attempt + 1 }
 }
+
+export async function updateHabitName(id: string, newName: string) {
+    const session = await auth()
+    if (!session) throw new Error('Unauthorized')
+    const { error } = await supabaseAdmin
+        .from('habits')
+        .update({ name: newName })
+        .eq('id', id)
+        .eq('user_id', session.user?.id)
+    revalidatePath('/dashboard')
+    return { error: error ? 'Something went wrong. Please try again.' : null }
+}

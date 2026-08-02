@@ -1,0 +1,30 @@
+'use client'
+
+import { updateHabitName } from "@/app/dashboard/actions";
+import { useState } from "react"
+import { FaPen } from "react-icons/fa";
+import { toast } from "sonner";
+
+export default function HabitName({ id, habitName }: { id: string, habitName: string }) {
+
+    const [isEditing, setIsEditing] = useState<boolean>(false)
+
+    const handleBlur = async (e: React.FocusEvent<HTMLInputElement>) => {
+        const result = await updateHabitName(id, e.target.value)
+        if (result.error) toast.error(result.error)
+        setIsEditing(false)
+    }
+
+    return (
+        <>
+        {isEditing ?
+            <input defaultValue={habitName} onBlur={handleBlur}/>
+            :
+            <div className="flex items-center gap-2 w-max cursor-pointer" onClick={() => setIsEditing(true)}>
+                <p className='text-white text-xl truncate' title={habitName}>{habitName}</p>
+                <FaPen className="text-sm text-white/60"></FaPen>
+            </div>
+        }
+        </>
+    )
+}

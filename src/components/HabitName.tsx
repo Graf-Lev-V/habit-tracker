@@ -30,7 +30,7 @@ export default function HabitName({ id, habitName }: { id: string, habitName: st
             <input className="border border-white/50 bg-neutral-900 rounded text-xl px-2 w-full" defaultValue={habitName} onBlur={handleBlur} onKeyDown={handleKeyDown} maxLength={50} autoFocus/>
             :
             <div className="flex items-center gap-2 w-max cursor-pointer" onClick={() => setIsEditing(true)}>
-                <p className='text-white text-xl truncate' title={habitName}>{displayName}</p>
+                <p className='text-white text-xl truncate' title={displayName}>{displayName}</p>
                 <FaPen className="text-sm text-white/60"></FaPen>
             </div>
         }

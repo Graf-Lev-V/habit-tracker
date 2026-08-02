@@ -27,7 +27,7 @@ export default function HabitName({ id, habitName }: { id: string, habitName: st
     return (
         <>
         {isEditing ?
-            <input className="border border-white/50 bg-neutral-900 rounded text-xl px-2 w-full" defaultValue={habitName} onBlur={handleBlur} onKeyDown={handleKeyDown} maxLength={50} autoFocus/>
+            <input className="border border-white/50 bg-neutral-900 rounded text-xl w-full" defaultValue={habitName} onBlur={handleBlur} onKeyDown={handleKeyDown} maxLength={50} autoFocus/>
             :
             <div className="flex items-center gap-2 w-max cursor-pointer" onClick={() => setIsEditing(true)}>
                 <p className='text-white text-xl truncate' title={displayName}>{displayName}</p>

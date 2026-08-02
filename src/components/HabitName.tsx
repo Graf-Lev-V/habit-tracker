@@ -14,11 +14,14 @@ export default function HabitName({ id, habitName }: { id: string, habitName: st
         if (result.error) toast.error(result.error)
         setIsEditing(false)
     }
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') e.currentTarget.blur()
+    }
 
     return (
         <>
         {isEditing ?
-            <input defaultValue={habitName} onBlur={handleBlur}/>
+            <input className="border border-white/50 bg-neutral-800 rounded" defaultValue={habitName} onBlur={handleBlur} autoFocus/>
             :
             <div className="flex items-center gap-2 w-max cursor-pointer" onClick={() => setIsEditing(true)}>
                 <p className='text-white text-xl truncate' title={habitName}>{habitName}</p>

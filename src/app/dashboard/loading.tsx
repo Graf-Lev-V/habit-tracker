@@ -16,8 +16,8 @@ export default function Loading() {
                 </div>
             </div>
             <div className='h-[311px] sm:h-[333px] w-full max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
-                <div className="flex justify-between items-center gap-2">
-                    <div className="h-[32px] w-full mt-1 mb-3 bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-4 flex justify-between items-center gap-2">
+                    <div className="h-[28px] w-full mt-1 mb-3 bg-neutral-700 rounded animate-pulse"></div>
                     <div className="aspect-square p-4 mb-1 rounded bg-neutral-700"></div>
                 </div>
                 <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>

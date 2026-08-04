@@ -27,8 +27,8 @@ export default function Test() {
                 <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[12px] w-[175px] mb-1 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[40px] w-[70px] my-2 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="hidden sm:block w-full pt-8 mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '53 / 7'}}></div>
-                <div className="block sm:hidden w-full pt-8 mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '13 / 7'}}></div>
+                <div className="hidden sm:block w-full mt-8 mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '53 / 7'}}></div>
+                <div className="block sm:hidden w-full mt-8 mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '13 / 7'}}></div>
             </div>
              <div className='h-[311px] sm:h-[333px] w-full max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
                 <div className="h-8 flex justify-between items-center gap-2 mb-1">
@@ -38,8 +38,8 @@ export default function Test() {
                 <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[12px] w-[175px] mb-1 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[40px] w-[70px] my-2 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="hidden sm:block w-full pt-8 mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '53 / 7'}}></div>
-                <div className="block sm:hidden w-full pt-8 mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '13 / 7'}}></div>
+                <div className="hidden sm:block w-full mt-8 mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '53 / 7'}}></div>
+                <div className="block sm:hidden w-full mt-8 mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '13 / 7'}}></div>
             </div>
         </main>
         </>

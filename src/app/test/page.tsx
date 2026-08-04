@@ -27,22 +27,10 @@ export default function Test() {
                 <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[12px] w-[175px] mb-1 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[40px] w-[70px] my-2 mb-[41px] bg-neutral-700 rounded animate-pulse"></div>
-                <div className="hidden sm:block mt-1">
-                    <div className="grid grid-rows-7 gap-1 grid-flow-col justify-center" style={{gridTemplateColumns: `repeat(53, minmax(0, 1fr))`}}>
-                        {Array.from({ length: 53 * 7 }).map((_, i) => (
-                            <div key={i} className="rounded-xs bg-neutral-700 aspect-square animate-pulse" />
-                        ))}
-                    </div>
-                </div>
-                <div className="block sm:hidden mt-1">
-                    <div className="grid grid-rows-7 gap-1 grid-flow-col justify-center" style={{gridTemplateColumns: `repeat(13, minmax(0, 1fr))`}}>
-                        {Array.from({ length: 13 * 7 }).map((_, i) => (
-                            <div key={i} className="rounded-xs bg-neutral-700 aspect-square animate-pulse" />
-                        ))}
-                    </div>
-                </div>
+                <div className="hidden sm:block w-full mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '53 / 7'}}></div>
+                <div className="block sm:hidden w-full mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '13 / 7'}}></div>
             </div>
-            <div className='h-[311px] sm:h-[333px] w-full max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
+             <div className='h-[311px] sm:h-[333px] w-full max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
                 <div className="h-8 flex justify-between items-center gap-2 mb-1">
                     <div className="h-8 w-full bg-neutral-700 rounded animate-pulse"></div>
                     <div className="aspect-square p-4 rounded bg-neutral-700"></div>
@@ -50,20 +38,8 @@ export default function Test() {
                 <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[12px] w-[175px] mb-1 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[40px] w-[70px] my-2 mb-[41px] bg-neutral-700 rounded animate-pulse"></div>
-                <div className="hidden sm:block mt-1">
-                    <div className="grid grid-rows-7 gap-1 grid-flow-col justify-center" style={{gridTemplateColumns: `repeat(53, minmax(0, 1fr))`}}>
-                        {Array.from({ length: 53 * 7 }).map((_, i) => (
-                            <div key={i} className="rounded-xs bg-neutral-700 aspect-square animate-pulse" />
-                        ))}
-                    </div>
-                </div>
-                <div className="block sm:hidden mt-1">
-                    <div className="grid grid-rows-7 gap-1 grid-flow-col justify-center" style={{gridTemplateColumns: `repeat(13, minmax(0, 1fr))`}}>
-                        {Array.from({ length: 13 * 7 }).map((_, i) => (
-                            <div key={i} className="rounded-xs bg-neutral-700 aspect-square animate-pulse" />
-                        ))}
-                    </div>
-                </div>
+                <div className="hidden sm:block w-full mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '53 / 7'}}></div>
+                <div className="block sm:hidden w-full mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '13 / 7'}}></div>
             </div>
         </main>
         </>

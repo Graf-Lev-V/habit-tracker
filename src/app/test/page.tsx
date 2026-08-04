@@ -26,7 +26,7 @@ export default function Test() {
                 </div>
                 <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[12px] w-[175px] mb-1 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="h-[40px] w-[70px] my-2 mb-[41px] bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-[40px] w-[70px] my-2  bg-neutral-700 rounded animate-pulse"></div>
                 <div className="hidden sm:block w-full mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '53 / 7'}}></div>
                 <div className="block sm:hidden w-full mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '13 / 7'}}></div>
             </div>
@@ -37,7 +37,7 @@ export default function Test() {
                 </div>
                 <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[12px] w-[175px] mb-1 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="h-[40px] w-[70px] my-2 mb-[41px] bg-neutral-700 rounded animate-pulse"></div>
+                <div className="h-[40px] w-[70px] my-2  bg-neutral-700 rounded animate-pulse"></div>
                 <div className="hidden sm:block w-full mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '53 / 7'}}></div>
                 <div className="block sm:hidden w-full mt-1 bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '13 / 7'}}></div>
             </div>

@@ -23,7 +23,7 @@ body {
   scrollbar-color: #525252 #202020;
 }
 
-html {
+main {
   scrollbar-gutter: stable both-edges;
 }
 

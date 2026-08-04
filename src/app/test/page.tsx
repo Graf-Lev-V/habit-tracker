@@ -27,7 +27,7 @@ export default function Test() {
                 <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[12px] w-[175px] mb-1 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[40px] w-[70px] my-2 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="border-t border-white/10 pt-3 mt-1 justify-center">
+                <div className="border-t border-white/10 pt-3 mt-1 flex flex-col justify-center">
                     <div className="h-5"></div>
                     <div className="hidden sm:block w-full bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '54 / 7'}}></div>
                     <div className="block sm:hidden w-full max-w-[422px] bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '13 / 7'}}></div>
@@ -41,7 +41,7 @@ export default function Test() {
                 <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[12px] w-[175px] mb-1 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="h-[40px] w-[70px] my-2 bg-neutral-700 rounded animate-pulse"></div>
-                <div className="border-t border-white/10 pt-3 mt-1 justify-center">
+                <div className="border-t border-white/10 pt-3 mt-1 flex flex-col justify-center">
                     <div className="h-5"></div>
                     <div className="hidden sm:block w-full bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '54 / 7'}}></div>
                     <div className="block sm:hidden w-full max-w-[422px] bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '13 / 7'}}></div>

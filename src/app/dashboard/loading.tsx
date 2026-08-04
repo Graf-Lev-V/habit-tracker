@@ -16,9 +16,9 @@ export default function Loading() {
                 </div>
             </div>
             <div className="flex flex-col gap-4 items-center w-full max-w-full min-w-0 sm:w-max mx-auto">
-                <div className='h-[311px] sm:h-[333px] w-full max-w-6xl sm:w-max rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
+                <div className='h-[311px] sm:h-[333px] w-full max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
                     <div className="h-8 flex justify-between items-center gap-2 mb-1">
-                        <div className="h-8 w-full bg-neutral-700 rounded animate-pulse"></div>
+                        <div className="h-8 w-full sm:w-[422px] bg-neutral-700 rounded animate-pulse"></div>
                         <div className="aspect-square p-4 rounded bg-neutral-700"></div>
                     </div>
                     <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>
@@ -27,9 +27,9 @@ export default function Loading() {
                     <div className="hidden sm:block h-[136px] w-full mt-1 bg-neutral-700 rounded animate-pulse"></div>
                     <div className="block sm:hidden h-[114px] w-full mt-1 bg-neutral-700 rounded animate-pulse"></div>
                 </div>
-                <div className='h-[311px] sm:h-[333px] w-full max-w-6xl sm:w-max rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
+                <div className='h-[311px] sm:h-[333px] w-full max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
                     <div className="h-8 flex justify-between items-center gap-2 mb-1">
-                        <div className="h-8 w-full bg-neutral-700 rounded animate-pulse"></div>
+                        <div className="h-8 w-full sm:w-[422px] bg-neutral-700 rounded animate-pulse"></div>
                         <div className="aspect-square p-4 rounded bg-neutral-700"></div>
                     </div>
                     <div className="h-[12px] w-[55px] mb-2 bg-neutral-700 rounded animate-pulse"></div>

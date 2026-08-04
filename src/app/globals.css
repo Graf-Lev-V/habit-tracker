@@ -21,6 +21,7 @@ body {
 * {
   scrollbar-width: thin;
   scrollbar-color: #525252 #202020;
+  scrollbar-gutter: stable both-edges;
 }
 
 ::-webkit-scrollbar {

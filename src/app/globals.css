@@ -23,10 +23,6 @@ body {
   scrollbar-color: #525252 #202020;
 }
 
-main {
-  scrollbar-gutter: stable both-edges;
-}
-
 ::-webkit-scrollbar {
   width: 8px; 
 }

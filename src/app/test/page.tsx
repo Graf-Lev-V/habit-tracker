@@ -1,5 +1,9 @@
+import Header from "@/components/Header";
+
 export default function Test() {
     return (
+        <>
+        <Header />
         <main className='p-4 flex flex-col items-center gap-4'>
             <div className='grid grid-cols-1 sm:grid-cols-3 gap-5'>
                 <div className='h-[96px] sm:h-[120px] px-8 py-3 sm:py-6 rounded flex flex-col gap-3 text-center bg-neutral-700 shadow-lg animate-pulse items-center'>
@@ -27,5 +31,6 @@ export default function Test() {
                 <div className="block sm:hidden h-[114px] w-full mt-1 bg-neutral-700 rounded animate-pulse"></div>
             </div>
         </main>
+        </>
     )
 }

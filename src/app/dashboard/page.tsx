@@ -42,7 +42,7 @@ export default async function Dashboard() {
   })
 
   return (
-    <main className='p-4 flex flex-col items-center gap-4 pr-2'>
+    <main className='p-4 flex flex-col items-center gap-4'>
       <div className='grid grid-cols-1 sm:grid-cols-3 gap-5'>
         <div className='px-8 py-3 sm:py-6 rounded flex flex-col gap-2 text-center bg-neutral-700 shadow-lg'>
           <p className='text-white/80'>Habits</p>

@@ -21,6 +21,9 @@ body {
 * {
   scrollbar-width: thin;
   scrollbar-color: #525252 #202020;
+}
+
+html {
   scrollbar-gutter: stable both-edges;
 }
 

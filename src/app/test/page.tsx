@@ -43,7 +43,7 @@ export default function Test() {
                 <div className="h-[40px] w-[70px] my-2 bg-neutral-700 rounded animate-pulse"></div>
                 <div className="border-t border-white/10 pt-3 mt-1">
                     <div className="h-5"></div>
-                    <div className="hidden sm:block w-full bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '53 / 7'}}></div>
+                    <div className="hidden sm:block w-full bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '54 / 7'}}></div>
                     <div className="block sm:hidden w-full bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '13 / 7'}}></div>
                 </div>
             </div>

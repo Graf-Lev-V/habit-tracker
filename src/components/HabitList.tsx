@@ -25,6 +25,7 @@ export default function HabitList({ habitStreak }: { habitStreak: Habit[] }) {
                     {showCards && habitStreak?.map((habit) => (
                         <motion.div 
                             key={habit.habit.id}
+                            style={{ width: '100%' }}
                             initial={{opacity: 0}}
                             animate={{opacity: 1}}
                             exit={{opacity: 0, scale: 0.95}}

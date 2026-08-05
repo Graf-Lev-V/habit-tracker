@@ -30,7 +30,7 @@ export default function Loading() {
                         <div className="block sm:hidden w-full bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '14 / 7'}}></div>
                     </div>
                 </div>
-                <div className='w-full sm:max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
+                <div className='rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse w-full'>
                     <div className="h-8 flex justify-between items-center gap-2 mb-1">
                         <div className="h-8 w-full bg-neutral-700 rounded animate-pulse"></div>
                         <div className="aspect-square p-4 rounded bg-neutral-700"></div>

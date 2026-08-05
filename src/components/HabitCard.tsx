@@ -6,7 +6,7 @@ import HabitName from './HabitName'
 
 export default function HabitCard({ habit }: { habit: Habit }) {
     return (
-        <div className='rounded p-4 bg-neutral-800 hover:brightness-110 flex flex-col shadow-lg w-max sm:w-full sm:max-w-6xl'>
+        <div className='rounded p-4 bg-neutral-800 hover:brightness-110 flex flex-col shadow-lg w-full sm:max-w-6xl'>
             <div className='flex justify-between items-center gap-2'>
                 <HabitName id={habit.habit.id} habitName={habit.habit.name}/>
                 <HabitDelete id={habit.habit.id} />

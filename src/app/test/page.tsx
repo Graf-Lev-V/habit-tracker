@@ -19,8 +19,8 @@ export default function Test() {
                     <div className="h-[34px] w-8 bg-neutral-600 rounded animate-pulse"></div>
                 </div>
             </div>
-            <div className="w-full max-w-[422px] flex flex-col gap-4 justify-center items-center">
-                <div className='w-full sm:max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
+            <div className="flex flex-col gap-4 justify-center items-center w-full max-w-[450px]">
+                <div className='rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse w-full sm:max-w-6xl'>
                     <div className="h-8 flex justify-between items-center gap-2 mb-1">
                         <div className="h-8 w-full bg-neutral-700 rounded animate-pulse"></div>
                         <div className="aspect-square p-4 rounded bg-neutral-700"></div>

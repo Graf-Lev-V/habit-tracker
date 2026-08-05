@@ -45,7 +45,7 @@ export default function HabitList({ habitStreak }: { habitStreak: Habit[] }) {
                         exit={{opacity: 0, scale: 0.95}}
                         transition={{duration: 0.4}}
                     >
-                        <p className='rounded p-4 bg-neutral-800 text-white/80 shadow-lg'>No habits yet. Add your first one to start tracking your progress.</p>
+                        <p className='rounded p-4 bg-neutral-800 text-white/80'>No habits yet. Add your first one to start tracking your progress.</p>
                     </motion.div>
                     }
                 </AnimatePresence>

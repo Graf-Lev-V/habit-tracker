@@ -16,7 +16,7 @@ export default function HabitList({ habitStreak }: { habitStreak: Habit[] }) {
 
     return (
             <div className="flex flex-col gap-4 justify-center items-center w-full max-w-[450px] sm:max-w-6xl">
-                <AnimatePresence onExitComplete={() => {
+                <AnimatePresence initial={false} onExitComplete={() => {
                     if (habitStreak.length === 0) {
                         setShowEmpty(true)
                         setShowCards(false)
@@ -34,7 +34,7 @@ export default function HabitList({ habitStreak }: { habitStreak: Habit[] }) {
                         </motion.div>
                     ))}
                 </AnimatePresence>
-                <AnimatePresence onExitComplete={() => {
+                <AnimatePresence initial={false} onExitComplete={() => {
                     if (habitStreak.length > 0) setShowCards(true)
                 }}>
                     {showEmpty &&

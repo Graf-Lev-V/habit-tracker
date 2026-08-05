@@ -20,7 +20,7 @@ export default function Test() {
                 </div>
             </div>
             <div className="flex flex-col gap-4 justify-center items-center">
-                <div className='min-width: calc(422px + 2rem) max-w-full sm:w-full sm:max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
+                <div className='w-[min(calc(422px+2rem),100%)] max-w-full sm:w-full sm:max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
                     <div className="h-8 flex justify-between items-center gap-2 mb-1">
                         <div className="h-8 w-full bg-neutral-700 rounded animate-pulse"></div>
                         <div className="aspect-square p-4 rounded bg-neutral-700"></div>
@@ -31,10 +31,10 @@ export default function Test() {
                     <div className="border-t border-white/10 pt-3 mt-1 flex flex-col items-center">
                         <div className="h-5"></div>
                         <div className="hidden sm:block w-full bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '54 / 7'}}></div>
-                        <div className="block sm:hidden  bg-neutral-700 rounded animate-pulse" style={{ width: 'min(422px, calc(100% - 2rem))', aspectRatio: '14 / 7'}}></div>
+                        <div className="block sm:hidden w-full max-w-[422px] bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '14 / 7'}}></div>
                     </div>
                 </div>
-                <div className='min-width: calc(422px + 2rem) max-w-full sm:w-full sm:max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
+                <div className='w-[min(calc(422px+2rem),100%)] max-w-full sm:w-full sm:max-w-6xl rounded p-4 bg-neutral-800 flex flex-col shadow-lg animate-pulse'>
                     <div className="h-8 flex justify-between items-center gap-2 mb-1">
                         <div className="h-8 w-full bg-neutral-700 rounded animate-pulse"></div>
                         <div className="aspect-square p-4 rounded bg-neutral-700"></div>
@@ -45,7 +45,7 @@ export default function Test() {
                     <div className="border-t border-white/10 pt-3 mt-1 flex flex-col items-center">
                         <div className="h-5"></div>
                         <div className="hidden sm:block w-full bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '54 / 7'}}></div>
-                        <div className="block sm:hidden  bg-neutral-700 rounded animate-pulse" style={{ width: 'min(422px, calc(100% - 2rem))', aspectRatio: '14 / 7'}}></div>
+                        <div className="block sm:hidden w-full max-w-[422px] bg-neutral-700 rounded animate-pulse" style={{aspectRatio: '14 / 7'}}></div>
                     </div>
                 </div>
             </div>

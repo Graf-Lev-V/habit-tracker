@@ -1,6 +1,6 @@
 export default function Loading() {
     return (
-        <main className='p-4 flex flex-col items-center gap-4 '>
+        <main className='p-4 flex flex-col items-center gap-4 scrollbar-gutter-stable'>
             <div className='grid grid-cols-1 sm:grid-cols-3 gap-5 '>
                 <div className='h-[96px] sm:h-[120px] px-8 py-3 sm:py-6 rounded flex flex-col gap-3 text-center bg-neutral-700 shadow-lg animate-pulse items-center'>
                     <div className="h-[20px] mb-[2px] w-14 bg-neutral-600 rounded animate-pulse"></div>

@@ -4,6 +4,8 @@
 
 A full-stack habit tracking application built with **Next.js**, **Auth.js**, and **Supabase**. It helps users build consistency through daily check-ins, streak tracking, and a GitHub-style yearly heatmap.
 
+**Tech:** Next.js 16 • React 19 • TypeScript • Auth.js • Supabase • Tailwind CSS • Framer Motion
+
 ---
 
 ## Overview
@@ -40,14 +42,14 @@ Unlike a traditional to-do list, Habit Tracker focuses on **long-term consistenc
 
 - **GitHub OAuth authentication** via Auth.js v5 with Supabase-backed user accounts
 - **Create, edit, complete, toggle, and delete habits** using Server Actions
-- **Inline habit editing** with optimistic UI updates and automatic rollback on failure
 - **Current streak** and **best streak** calculated from raw completion logs
 - **GitHub-style yearly heatmap** with month labels and a fully responsive layout
 - **Dashboard statistics** (total habits, completed today, best streak)
-- **Toast notifications** for mutations and a dedicated `error.tsx` boundary
+- **Inline habit editing** with optimistic UI updates and automatic rollback on failure
 - **Animated list transitions** with Framer Motion
-- **Responsive UI** tested on real mobile Safari devices
+- **Toast notifications** for mutations and a dedicated `error.tsx` boundary
 - **Custom loading skeletons** matching the final layout to eliminate layout shifts
+- **Responsive UI** tested on real mobile Safari devices
 
 ---
 
@@ -73,7 +75,7 @@ Unlike a traditional to-do list, Habit Tracker focuses on **long-term consistenc
 
 ---
 
-## Challenges & What I Learned
+## Technical Challenges
 
 - Reworked the streak algorithm to correctly reset only after an entire day is missed while preserving a same-day grace period.
 - Built a fully responsive GitHub-style contribution calendar without hydration mismatches by resolving device type on the server instead of relying on `window.innerWidth`.

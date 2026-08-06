@@ -2,7 +2,7 @@
 
 **🔗 Live Demo:** https://habit-tracker-six-taupe.vercel.app/
 
-A full-stack habit tracking application built with Next.js, Auth.js and Supabase. It helps users build consistency through daily check-ins, streak tracking and a GitHub-style yearly heatmap.
+A full-stack habit tracking application built with **Next.js**, **Auth.js**, and **Supabase**. It helps users build consistency through daily check-ins, streak tracking, and a GitHub-style yearly heatmap.
 
 ---
 
@@ -16,36 +16,46 @@ Unlike a traditional to-do list, Habit Tracker focuses on **long-term consistenc
 
 ## Screenshots
 
+### Dashboard
+
 <p align="center">
   <img src="./screenshots/dashboard.png" alt="Dashboard" width="900" />
 </p>
 
+### Add Habit
+
 <p align="center">
-  <img src="./screenshots/mobile.png" alt="Mobile view" width="240" />
-  <img src="./screenshots/add-habit.png" alt="Add habit form" width="500" />
+  <img src="./screenshots/add-habit.png" alt="Add Habit" width="900" />
+</p>
+
+### Mobile
+
+<p align="center">
+  <img src="./screenshots/mobile.png" alt="Mobile view" width="260" />
 </p>
 
 ---
 
 ## Features
 
-- **GitHub OAuth authentication** with Auth.js v5 and Supabase-backed user accounts
-- **Create, edit, complete, toggle and delete habits** using Server Actions
+- **GitHub OAuth authentication** via Auth.js v5 with Supabase-backed user accounts
+- **Create, edit, complete, toggle, and delete habits** using Server Actions
 - **Inline habit editing** with optimistic UI updates and automatic rollback on failure
-- **Current streak** and **best streak** calculated from raw completion history
-- **GitHub-style yearly heatmap** with responsive layout and month labels
+- **Current streak** and **best streak** calculated from raw completion logs
+- **GitHub-style yearly heatmap** with month labels and a fully responsive layout
 - **Dashboard statistics** (total habits, completed today, best streak)
-- **Animated UI transitions** using Framer Motion
-- **Toast notifications** and dedicated error boundaries
-- **Responsive layout** tested on real mobile Safari devices
+- **Toast notifications** for mutations and a dedicated `error.tsx` boundary
+- **Animated list transitions** with Framer Motion
+- **Responsive UI** tested on real mobile Safari devices
 - **Custom loading skeletons** matching the final layout to eliminate layout shifts
 
 ---
 
 ## Tech Stack
 
-- **Frontend:** Next.js 16, React 19, TypeScript, Tailwind CSS v4
-- **Backend:** Server Actions, Server Components, Middleware
+- **Framework:** Next.js 16 (App Router, Server Components, Server Actions, Middleware)
+- **Language:** TypeScript
+- **UI:** React 19, Tailwind CSS v4
 - **Authentication:** Auth.js v5 (GitHub OAuth)
 - **Database:** Supabase (PostgreSQL)
 - **Animations:** Framer Motion
@@ -56,19 +66,19 @@ Unlike a traditional to-do list, Habit Tracker focuses on **long-term consistenc
 
 ## Architecture Notes
 
-- User identity is decoupled from the OAuth provider. A stable internal UUID is stored in the `users` table and referenced throughout the database instead of relying on GitHub IDs.
-- Server Actions use a `success` / `attempt` counter pattern instead of boolean flags, allowing `useActionState` to detect consecutive identical results reliably.
+- User identity is decoupled from the OAuth provider. A stable UUID stored in the `users` table is used throughout the application instead of GitHub's user ID.
+- Server Actions use a `success` / `attempt` counter pattern instead of boolean flags, allowing `useActionState` to reliably detect consecutive identical responses.
 - Authentication is enforced at two layers: middleware for normal navigation and a server-side redirect as defense in depth.
-- Errors from mutations are surfaced through typed Server Action responses, while data-fetching errors are handled by a dedicated `error.tsx` boundary.
+- Mutation errors are returned as typed Server Action responses and displayed through toast notifications, while data-fetching errors are handled by a dedicated `error.tsx` boundary.
 
 ---
 
 ## Challenges & What I Learned
 
-- Implemented reliable streak calculations with a same-day grace period after redesigning the original date comparison logic.
-- Built a fully responsive GitHub-style calendar without hydration mismatches by detecting device type server-side instead of relying on `window.innerWidth`.
-- Eliminated layout shifts between loading and loaded states by using `scrollbar-gutter: stable` only where necessary.
-- Fixed a Safari-only overflow issue caused by a missing `min-w-0`, highlighting the importance of testing on real devices.
+- Reworked the streak algorithm to correctly reset only after an entire day is missed while preserving a same-day grace period.
+- Built a fully responsive GitHub-style contribution calendar without hydration mismatches by resolving device type on the server instead of relying on `window.innerWidth`.
+- Eliminated layout shifts between `loading.tsx` and the loaded page by applying `scrollbar-gutter: stable` only to the main content container.
+- Fixed a mobile Safari-only overflow bug caused by a missing `min-w-0`, reinforcing the importance of testing on real devices instead of relying solely on browser emulation.
 
 ---
 

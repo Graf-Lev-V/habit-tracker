@@ -17,12 +17,12 @@ Unlike a traditional to-do list, Habit Tracker focuses on **long-term consistenc
 ## Screenshots
 
 <p align="center">
-  <img src="./screenshots/dashboard.png" alt="Dashboard" width="850" />
+  <img src="./screenshots/dashboard.png" alt="Dashboard" width="900" />
 </p>
 
 <p align="center">
-  <img src="./screenshots/mobile.png" alt="Mobile view" width="260" />
-  <img src="./screenshots/add-habit.png" alt="Add habit form" width="260" />
+  <img src="./screenshots/mobile.png" alt="Mobile view" width="240" />
+  <img src="./screenshots/add-habit.png" alt="Add habit form" width="500" />
 </p>
 
 ---

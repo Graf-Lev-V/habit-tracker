@@ -88,4 +88,3 @@ Unlike a traditional to-do list, Habit Tracker focuses on **long-term consistenc
 
 - Rate limiting for Server Actions (Upstash / Vercel)
 - `useOptimistic` for instant UI updates
-- Habit categories and filtering

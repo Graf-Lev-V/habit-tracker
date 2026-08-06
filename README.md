@@ -1,57 +1,79 @@
 # Habit Tracker
 
-**[Live demo →](https://habit-tracker-six-taupe.vercel.app/)**
+**🔗 Live Demo:** https://habit-tracker-six-taupe.vercel.app/
 
-A full-stack habit tracking app that helps you build consistency through daily check-ins, streaks, and a GitHub-style contribution calendar.
+A full-stack habit tracking application built with Next.js, Auth.js and Supabase. It helps users build consistency through daily check-ins, streak tracking and a GitHub-style yearly heatmap.
 
-## What is this?
+---
 
-"Habit" here means any recurring action you want to stay disciplined about — reading, exercising, meditating, and so on. The app isn't just a to-do list: it's built around **streaks** (how many days in a row you've kept a habit) and a **visual history** (a full-year heatmap calendar), so you can actually see your consistency over time instead of just checking boxes.
+## Overview
+
+A **habit** is any recurring activity you want to stay consistent with — reading, exercising, meditating, learning, and more.
+
+Unlike a traditional to-do list, Habit Tracker focuses on **long-term consistency**. Every completion contributes to your current streak and is visualized in a GitHub-style contribution calendar, making progress easy to track throughout the year.
+
+---
 
 ## Screenshots
 
-![Dashboard](./screenshots/dashboard.png)
-![Mobile view](./screenshots/mobile.png)
-![Add habit form](./screenshots/add-habit.png)
+<p align="center">
+  <img src="./screenshots/dashboard.png" alt="Dashboard" width="850" />
+</p>
+
+<p align="center">
+  <img src="./screenshots/mobile.png" alt="Mobile view" width="260" />
+  <img src="./screenshots/add-habit.png" alt="Add habit form" width="260" />
+</p>
+
+---
 
 ## Features
 
-- **GitHub OAuth authentication** via Auth.js v5, with sessions synced to a Supabase `users` table (stable UUIDs independent of the OAuth provider's own ID)
-- **Create, complete, toggle, and delete habits** via Server Actions, with `isPending` loading states on every button and a confirm-before-delete interaction (first click arms the button, second click confirms — no modal)
-- **Inline habit name editing** — click the name, edit in place, save on Enter/blur, with optimistic UI update and automatic rollback if the server request fails
-- **Streak tracking** — current streak (with a same-day grace period, so it doesn't reset until a full day is missed) and an all-time best streak, both computed from raw completion logs
-- **GitHub-style yearly heatmap** per habit, with month labels, fully fluid and responsive (grid columns sized with `minmax(0, 1fr)` and `aspect-square` cells, not fixed pixels)
-- **Dashboard stats** — total habits, completed today, and best streak across all habits
-- **Toast notifications** for Supabase errors on every mutation, plus a dedicated `error.tsx` boundary with retry/sign-out options
-- **Animated list transitions** (Framer Motion) when adding/removing habits, including a smooth empty-state transition — with no animation flash on the very first page load
-- **Fully responsive**, tested on real mobile Safari (not just DevTools) — dashboard, forms, calendar, and auth pages all adapt from mobile to desktop
-- **Custom loading skeletons** matching the final layout precisely, including scrollbar-width compensation to avoid a visible content shift between the loading and loaded states
+- **GitHub OAuth authentication** with Auth.js v5 and Supabase-backed user accounts
+- **Create, edit, complete, toggle and delete habits** using Server Actions
+- **Inline habit editing** with optimistic UI updates and automatic rollback on failure
+- **Current streak** and **best streak** calculated from raw completion history
+- **GitHub-style yearly heatmap** with responsive layout and month labels
+- **Dashboard statistics** (total habits, completed today, best streak)
+- **Animated UI transitions** using Framer Motion
+- **Toast notifications** and dedicated error boundaries
+- **Responsive layout** tested on real mobile Safari devices
+- **Custom loading skeletons** matching the final layout to eliminate layout shifts
+
+---
 
 ## Tech Stack
 
-- **Framework:** Next.js 16 (App Router, Server Actions, Server Components, Middleware)
-- **Auth:** Auth.js v5 (GitHub OAuth)
+- **Frontend:** Next.js 16, React 19, TypeScript, Tailwind CSS v4
+- **Backend:** Server Actions, Server Components, Middleware
+- **Authentication:** Auth.js v5 (GitHub OAuth)
 - **Database:** Supabase (PostgreSQL)
-- **UI:** React 19, Tailwind CSS v4, Framer Motion
+- **Animations:** Framer Motion
 - **Notifications:** Sonner
-- **Language:** TypeScript
 - **Deployment:** Vercel
+
+---
 
 ## Architecture Notes
 
-- User identity is decoupled from the OAuth provider: on sign-in, a `users` row is upserted by `github_id`, and the resulting stable UUID is used everywhere else (habits, logs) — so provider ID changes never break data ownership.
-- Server Actions use a counter pattern (`success: number` / `attempt: number`) instead of a boolean flag in their return state, so `useActionState` consumers can reliably detect a *new* result even when two consecutive calls return the same error message.
-- Unauthenticated access is blocked at two layers: `proxy.ts` middleware for the common case, plus a `redirect('/login')` check in `page.tsx` as defense-in-depth.
-- Error handling covers both mutations (Server Actions return typed errors, surfaced as toasts) and reads (`page.tsx` throws on Supabase errors, caught by `error.tsx`).
+- User identity is decoupled from the OAuth provider. A stable internal UUID is stored in the `users` table and referenced throughout the database instead of relying on GitHub IDs.
+- Server Actions use a `success` / `attempt` counter pattern instead of boolean flags, allowing `useActionState` to detect consecutive identical results reliably.
+- Authentication is enforced at two layers: middleware for normal navigation and a server-side redirect as defense in depth.
+- Errors from mutations are surfaced through typed Server Action responses, while data-fetching errors are handled by a dedicated `error.tsx` boundary.
+
+---
 
 ## Challenges & What I Learned
 
-- **Streak logic** took a few iterations to get right — an earlier version never reset the streak if the last completion was more than a day old, which required rethinking the date comparison from scratch (with a same-day grace period, not just "yesterday or today").
-- **Responsive calendar without a layout flash**: an initial client-side `window.innerWidth` approach caused hydration mismatches and React 19's stricter `setState`-in-effect warnings. Settled on resolving device type server-side via User-Agent before the first render — no flash, no client-only state.
-- **A visual shift between `loading.tsx` and the loaded page** turned out to be caused by the desktop scrollbar appearing/disappearing depending on habit count, shifting the centered content by the scrollbar's width. Fixed with a scoped `scrollbar-gutter: stable` on `<main>` rather than globally on `<html>`, to avoid an unstyled gutter artifact next to the header.
-- **A mobile Safari-only overflow bug** (habit cards overflowing the viewport, invisible in Chrome DevTools' responsive mode) traced back to a missing `min-w-0` on a flex child — a reminder that responsive testing on a real device catches things emulators don't.
+- Implemented reliable streak calculations with a same-day grace period after redesigning the original date comparison logic.
+- Built a fully responsive GitHub-style calendar without hydration mismatches by detecting device type server-side instead of relying on `window.innerWidth`.
+- Eliminated layout shifts between loading and loaded states by using `scrollbar-gutter: stable` only where necessary.
+- Fixed a Safari-only overflow issue caused by a missing `min-w-0`, highlighting the importance of testing on real devices.
+
+---
 
 ## Roadmap
 
-- Rate limiting on Server Actions (Upstash/Vercel)
-- `useOptimistic` for instant UI updates on habit creation/deletion without waiting on full server re-renders
+- Rate limiting for Server Actions (Upstash / Vercel)
+- `useOptimistic` for instant UI updates
+- Habit categories and filtering

@@ -41,7 +41,7 @@ Unlike a traditional to-do list, Habit Tracker focuses on **long-term consistenc
 ## Features
 
 - **GitHub OAuth authentication** via Auth.js v5 with Supabase-backed user accounts
-- **Create, edit, complete, toggle, and delete habits** using Server Actions
+- **Create, edit, complete/undo, and delete habits** using Server Actions
 - **Current streak** and **best streak** calculated from raw completion logs
 - **GitHub-style yearly heatmap** with month labels and a fully responsive layout
 - **Dashboard statistics** (total habits, completed today, best streak)
@@ -80,7 +80,7 @@ Unlike a traditional to-do list, Habit Tracker focuses on **long-term consistenc
 - Reworked the streak algorithm to correctly reset only after an entire day is missed while preserving a same-day grace period.
 - Built a fully responsive GitHub-style contribution calendar without hydration mismatches by resolving device type on the server instead of relying on `window.innerWidth`.
 - Eliminated layout shifts between `loading.tsx` and the loaded page by applying `scrollbar-gutter: stable` only to the main content container.
-- Fixed a mobile Safari-only overflow bug caused by a missing `min-w-0`, reinforcing the importance of testing on real devices instead of relying solely on browser emulation.
+- Fixed a mobile Safari-only overflow bug where habit cards could exceed the viewport width — traced to a missing width constraint on `HabitList`'s wrapper `div`, invisible in Chrome DevTools' responsive mode.
 
 ---
 
